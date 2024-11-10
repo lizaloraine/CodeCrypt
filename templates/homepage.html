@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Homepage</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='homepage.css') }}">
+</head>
+<body>
+    <!-- Header Section -->
+    <header>
+        <div class="header-left">
+            <h1>CodeCrypt</h1>
+        </div>
+        <div class="header-right">
+            <a href="/logout" class="logout-btn">Logout</a>
+            <a href="/profile" class="profile-text">Profile</a>
+        </div>
+    </header>
+    <hr class="divider">
+
+    <!-- Sidebar -->
+    <div class="sidebar">
+        <a href="/affine" class="sidebar-item">Affine Cipher</a>
+        <a href="/atbash" class="sidebar-item">Atbash Cipher</a>
+        <a href="/base64" class="sidebar-item">Base64 Encoding</a>
+        <a href="/binary" class="sidebar-item">Binary Encoding</a>
+        <a href="/caesar" class="sidebar-item">Caesar Cipher</a>
+        <a href="/hexadecimal" class="sidebar-item">Hexadecimal Encoding</a>
+        <a href="/morse" class="sidebar-item">Morse Code</a>
+        <a href="/railfence" class="sidebar-item">Rail Fence Cipher</a>
+        <a href="/rot13" class="sidebar-item">ROT13 Cipher</a>
+        <a href="/vigenere" class="sidebar-item">Vigenère Cipher</a>
+        <!-- Additional options can be added here as needed -->
+    </div>
+
+    <!-- Main Content -->
+    <div class="main-content">
+        <h2>Hi, {{ username }}! What do you want to convert today?</h2>
+        <div class="options">
+        <a href="/affine" class="option-btn">Affine Cipher</a>
+        <a href="/atbash" class="option-btn">Atbash Cipher</a>
+        <a href="/base64" class="option-btn">Base64 Encoding</a>
+        <a href="/binary" class="option-btn">Binary Encoding</a>
+        <a href="/caesar" class="option-btn">Caesar Cipher</a>
+        <a href="/hexadecimal" class="option-btn">Hexadecimal Encoding</a>
+        <a href="/morse" class="option-btn">Morse Code</a>
+        <a href="/railfence" class="option-btn">Rail Fence Cipher</a>
+        <a href="/rot13" class="option-btn">ROT13 Cipher</a>
+        <a href="/vigenere" class="option-btn">Vigenère Cipher</a>
+        </div>
+    </div>
+</body>
+</html>
