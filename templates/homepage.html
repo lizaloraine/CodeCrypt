@@ -1,0 +1,650 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Homepage</title>
+    <!-- Link to external CSS files -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='homepage.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    
+</head>
+<body>
+    <header>
+        <div class="header-right">
+            <a href="/logout" class="logout-btn">Logout</a>
+            <a href="/profile" class="profile-text">
+                <i class="fas fa-user-circle"></i>  <!-- Profile Icon -->
+            </a>
+        </div>
+       
+    </header>
+
+
+    <!-- Second Navbar (Replaced with the items from the first code) -->
+    <div id="nav-bar">
+        <input id="nav-toggle" type="checkbox"/>
+        <div id="nav-header">
+           <div id="nav-logo">
+            <a href="{{ url_for('homepage') }}">
+                <img src="{{ url_for('static', filename='images/logo2.png') }}" class="login-logo">
+            </a>
+           </div>
+           <a id="nav-title" href="{{ url_for('homepage') }}">CodeCrypt</a>
+            <label for="nav-toggle"><span id="nav-toggle-burger"></span></label>
+        </div>
+        <div id="nav-content">
+            <a href="/affine" class="nav-button"><i class="fas fa-align-left"></i><span>Affine Cipher</span></a>
+            <a href="/atbash" class="nav-button"><i class="fas fa-arrow-left"></i><span>Atbash Cipher</span></a>
+            <a href="/base64" class="nav-button"><i class="fas fa-code"></i><span>Base64 Encoding</span></a>
+            <a href="/binary" class="nav-button"><i class="fas fa-circle"></i><span>Binary Encoding</span></a>
+            <a href="/caesar" class="nav-button"><i class="fas fa-asterisk"></i><span>Caesar Cipher</span></a>
+            <a href="/hexadecimal" class="nav-button"><i class="fas fa-hashtag"></i><span>Hexadecimal Encoding</span></a>
+            <a href="/morse" class="nav-button"><i class="fas fa-wave-square"></i><span>Morse Code</span></a>
+            <a href="/railfence" class="nav-button"><i class="fas fa-random"></i><span>Rail Fence Cipher</span></a>
+            <a href="/rot13" class="nav-button"><i class="fas fa-sync-alt"></i><span>ROT13 Cipher</span></a>
+            <a href="/vigenere" class="nav-button"><i class="fas fa-font"></i><span>Vigenère Cipher</span></a>
+            <hr/>
+            <a href="/favorites" class="nav-button"><i class="fas fa-heart"></i><span>Favorites</span></a>
+            <a href="/allhistory" class="nav-button"><i class="fas fa-history"></i><span>History</span></a>
+            <div id="nav-content-highlight"></div>
+        </div>
+    </div>
+
+
+  <div class="parent-container">
+    <div class="title-container">
+        <h1>Hi, {{ username }}! What do you want to convert today?</h1>
+    </div>
+
+
+    
+    <div class="card-container">
+       
+        <a href="/affine" class="card">
+            <i class="fas fa-align-left icon"></i>
+            <div class="text">
+                <h4>Affine Cipher</h4>
+                <button onclick="FavButton1(event, 'Affine Cipher', 'A substitution cipher using a linear mathematical transformation.', 'fas fa-align-left icon', '/affine')" 
+                        id="favbtn1" 
+                        class="favbtn {% if 'CC001' in favorite_ciphers %}fav-active{% endif %}">
+                    <i class="fas fa-heart"></i>
+                </button>
+                <p>A substitution cipher using a linear mathematical transformation.</p>
+            </div>
+        </a>
+        
+
+
+        <a href="/atbash" class="card">
+            <i class="fas fa-arrow-left icon"></i>
+            <div class="text">
+                <h4>Atbash Cipher</h4>
+                <button onclick = "FavButton2(event, 'Atbash Cipher', 'An ancient cipher that substitutes each letter with its opposite.', 'fas fa-arrow-left icon', '/atbash')"
+                id = "favbtn2"
+                class = "favbtn {% if 'CC002' in favorite_ciphers %}fav-active{% endif %}">
+                <i class="fas fa-heart"></i></button>
+                <p>An ancient cipher that substitutes each letter with its opposite.</p>
+            </div>
+        </a>
+
+
+        <a href="/base64" class="card">
+            <i class="fas fa-code icon"></i>
+            <div class="text">
+                <h4>Base64 Encoding</h4>
+                <button onclick = "FavButton3(event, 'Base64 Encoding', 'Encode binary data into ASCII string format using Base64.', 'fas fa-code icon', '/base64')"
+                id = "favbtn3" class = "favbtn {% if 'CC003' in favorite_ciphers %}fav-active{% endif %}">
+                <i class="fas fa-heart"></i></button>
+                <p>Encode binary data into ASCII string format using Base64.</p>
+            </div>
+        </a>
+
+
+        <a href="/binary" class="card">
+            <i class="fas fa-circle icon"></i>
+            <div class="text">
+                <h4>Binary Encoding</h4>
+                <button onclick = "FavButton4(event, 'Binary Encoding', 'Convert text into binary code representation.', 'fas fa-circle icon', '/binary')"
+                id = "favbtn4" class = "favbtn {% if 'CC004' in favorite_ciphers %}fav-active{% endif %}"><i class="fas fa-heart"></i></button>
+                <p>Convert text into binary code representation.</p>
+            </div>
+        </a>
+
+
+        <a href="/caesar" class="card">
+            <i class="fas fa-asterisk icon"></i>
+            <div class="text">
+                <h4>Caesar Cipher</h4>
+                <button onclick = "FavButton5(event, 'Caesar Cipher', 'Encrypt text by shifting characters a certain number of positions.', 'fas fa-asterisk icon', '/caesar')"
+                id = "favbtn5" class = "favbtn {% if 'CC005' in favorite_ciphers %}fav-active{% endif %}"><i class="fas fa-heart"></i></button>
+                <p>Encrypt text by shifting characters a certain number of positions.</p>
+            </div>
+        </a>
+
+
+        <a href="/hexadecimal" class="card">
+            <i class="fas fa-hashtag icon"></i>
+            <div class="text">
+                <h4>Hexadecimal Encoding</h4>
+                <button onclick = "FavButton6(event, 'Hexadecimal Encoding', 'Encode text into hexadecimal format.', 'fas fa-hashtag icon', '/hexadecimal')"
+                id = "favbtn6" class = "favbtn {% if 'CC006' in favorite_ciphers %}fav-active{% endif %}"><i class="fas fa-heart"></i></button>
+                <p>Encode text into hexadecimal format.</p>
+            </div>
+        </a>
+
+
+        <a href="/morse" class="card">
+            <i class="fas fa-wave-square icon"></i>
+            <div class="text">
+                <h4>Morse Code</h4>
+                <button onclick = "FavButton7(event, 'Morse Code', 'Convert text into Morse code signals.', 'fas fa-wave-square icon','/morse')"
+                id = "favbtn7" class = "favbtn {% if 'CC007' in favorite_ciphers %}fav-active{% endif %}"><i class="fas fa-heart"></i></button>
+                <p>Convert text into Morse code signals.</p>
+            </div>
+        </a>
+
+
+        <a href="/railfence" class="card">
+            <i class="fas fa-random icon"></i>
+            <div class="text">
+                <h4>Rail Fence Cipher</h4>
+                <button onclick = "FavButton8(event, 'Rail Fence Cipher', 'A transposition cipher that arranges characters in a zig-zag pattern.', 'fas fa-random icon', '/railfence')"
+                id = "favbtn8" class = "favbtn {% if 'CC008' in favorite_ciphers %}fav-active{% endif %}"><i class="fas fa-heart"></i></button>
+                <p>A transposition cipher that arranges characters in a zig-zag pattern.</p>
+            </div>
+        </a>
+
+
+        <a href="/rot13" class="card">
+            <i class="fas fa-sync-alt icon"></i>
+            <div class="text">
+                <h4>ROT13 Cipher</h4>
+                <button onclick = "FavButton9(event, 'ROT13 Cipher', 'A simple cipher that shifts letters by 13 places in the alphabet.', 'fas fa-sync-alt icon', '/rot13')"
+                id = "favbtn9" class = "favbtn {% if 'CC009' in favorite_ciphers %}fav-active{% endif %}"><i class="fas fa-heart"></i></button>
+                <p>A simple cipher that shifts letters by 13 places in the alphabet.</p>
+            </div>
+        </a>
+
+
+        <a href="/vigenere" class="card">
+            <i class="fas fa-font icon"></i>
+            <div class="text">
+                <h4>Vigenère Cipher</h4>
+                <button onclick = "FavButton10(event, 'Vigenère Cipher', 'A method of encrypting alphabetic text by using a simple form of polyalphabetic substitution.', 'fas fa-font icon', '/vigenere')"
+                id = "favbtn10" class = "favbtn {% if 'CC010' in favorite_ciphers %}fav-active{% endif %}"><i class="fas fa-heart"></i></button>
+                <p>A method of encrypting alphabetic text by using a simple form of polyalphabetic substitution.</p>
+            </div>
+        </a>
+    </div>
+</div>
+<script>
+    // Select the elements needed
+const navToggle = document.getElementById("nav-toggle"); // Your navbar toggle checkbox
+const parentContainer = document.querySelector(".parent-container"); // The container that holds the grid
+const navbarWidthExpanded = 300; // Width of navbar when expanded
+const navbarWidthCollapsed = 100; // Width of navbar when collapsed
+const navbarRightExpanded = 40;
+const navbarrightCollapsed = 0;
+
+var favbtn = document.getElementById('favbtn');
+
+function FavButton1(event, toolName, description, iconText, href) {
+    
+    event.preventDefault();
+
+    
+    var favbtn = document.getElementById("favbtn1");
+    favbtn.classList.toggle("fav-active");
+
+    // Optional: change the button color or style
+    if (favbtn.classList.contains("fav-active")) {
+        favbtn.style.color = "red"; // Example: Change color when active
+    } else {
+        favbtn.style.color = ""; // Reset color when inactive
+    }
+
+    // Send the data to the Flask server using fetch
+    var isFavorited = favbtn.classList.contains("fav-active");
+    fetch('/toggle-favorite', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+            tool_name: toolName,
+            description: description,
+            icon_text: iconText,
+            is_favorited: isFavorited,
+            href: href,
+        })
+    })
+    .then(response => response.json())
+    .then(data => {
+        console.log(data.message); // Log the response message from the server
+    })
+    .catch(error => console.error('Error:', error));
+}
+
+function FavButton2(event, toolName, description, iconText, href) {
+    // Prevents the default behavior of the anchor tag
+    event.preventDefault();
+
+    // Your existing toggle logic for the heart button
+    var favbtn = document.getElementById("favbtn2");
+    favbtn.classList.toggle("fav-active");
+
+    // Optional: change the button color or style
+    if (favbtn.classList.contains("fav-active")) {
+        favbtn.style.color = "red"; // Example: Change color when active
+    } else {
+        favbtn.style.color = ""; // Reset color when inactive
+    }
+
+    // Send the data to the Flask server using fetch
+    var isFavorited = favbtn.classList.contains("fav-active");
+    fetch('/toggle-favorite', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+            tool_name: toolName,
+            description: description,
+            icon_text: iconText,
+            is_favorited: isFavorited,
+            href: href,
+        })
+    })
+    .then(response => response.json())
+    .then(data => {
+        console.log(data.message); // Log the response message from the server
+    })
+    .catch(error => console.error('Error:', error));
+}
+
+
+function FavButton3(event, toolName, description, iconText, href) {
+    // Prevents the default behavior of the anchor tag
+    event.preventDefault();
+
+    // Your existing toggle logic for the heart button
+    var favbtn = document.getElementById("favbtn3");
+    favbtn.classList.toggle("fav-active");
+
+    // Optional: change the button color or style
+    if (favbtn.classList.contains("fav-active")) {
+        favbtn.style.color = "red"; // Example: Change color when active
+    } else {
+        favbtn.style.color = ""; // Reset color when inactive
+    }
+
+    // Send the data to the Flask server using fetch
+    var isFavorited = favbtn.classList.contains("fav-active");
+    fetch('/toggle-favorite', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+            tool_name: toolName,
+            description: description,
+            icon_text: iconText,
+            is_favorited: isFavorited,
+            href: href,
+        })
+    })
+    .then(response => response.json())
+    .then(data => {
+        console.log(data.message); // Log the response message from the server
+    })
+    .catch(error => console.error('Error:', error));
+}
+
+
+function FavButton4(event, toolName, description, iconText, href) {
+    // Prevents the default behavior of the anchor tag
+    event.preventDefault();
+
+    // Your existing toggle logic for the heart button
+    var favbtn = document.getElementById("favbtn4");
+    favbtn.classList.toggle("fav-active");
+
+    // Optional: change the button color or style
+    if (favbtn.classList.contains("fav-active")) {
+        favbtn.style.color = "red"; // Example: Change color when active
+    } else {
+        favbtn.style.color = ""; // Reset color when inactive
+    }
+
+    // Send the data to the Flask server using fetch
+    var isFavorited = favbtn.classList.contains("fav-active");
+    fetch('/toggle-favorite', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+            tool_name: toolName,
+            description: description,
+            icon_text: iconText,
+            is_favorited: isFavorited,
+            href: href,
+        })
+    })
+    .then(response => response.json())
+    .then(data => {
+        console.log(data.message); // Log the response message from the server
+    })
+    .catch(error => console.error('Error:', error));
+}
+
+function FavButton5(event, toolName, description, iconText, href) {
+    // Prevents the default behavior of the anchor tag
+    event.preventDefault();
+
+    // Your existing toggle logic for the heart button
+    var favbtn = document.getElementById("favbtn5");
+    favbtn.classList.toggle("fav-active");
+
+    // Optional: change the button color or style
+    if (favbtn.classList.contains("fav-active")) {
+        favbtn.style.color = "red"; // Example: Change color when active
+    } else {
+        favbtn.style.color = ""; // Reset color when inactive
+    }
+
+    // Send the data to the Flask server using fetch
+    var isFavorited = favbtn.classList.contains("fav-active");
+    fetch('/toggle-favorite', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+            tool_name: toolName,
+            description: description,
+            icon_text: iconText,
+            is_favorited: isFavorited,
+            href: href,
+        })
+    })
+    .then(response => response.json())
+    .then(data => {
+        console.log(data.message); // Log the response message from the server
+    })
+    .catch(error => console.error('Error:', error));
+}
+
+function FavButton6(event, toolName, description, iconText, href) {
+    // Prevents the default behavior of the anchor tag
+    event.preventDefault();
+
+    // Your existing toggle logic for the heart button
+    var favbtn = document.getElementById("favbtn6");
+    favbtn.classList.toggle("fav-active");
+
+    // Optional: change the button color or style
+    if (favbtn.classList.contains("fav-active")) {
+        favbtn.style.color = "red"; // Example: Change color when active
+    } else {
+        favbtn.style.color = ""; // Reset color when inactive
+    }
+
+    // Send the data to the Flask server using fetch
+    var isFavorited = favbtn.classList.contains("fav-active");
+    fetch('/toggle-favorite', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+            tool_name: toolName,
+            description: description,
+            icon_text: iconText,
+            is_favorited: isFavorited,
+            href: href,
+        })
+    })
+    .then(response => response.json())
+    .then(data => {
+        console.log(data.message); // Log the response message from the server
+    })
+    .catch(error => console.error('Error:', error));
+}
+
+function FavButton7(event, toolName, description, iconText, href) {
+    // Prevents the default behavior of the anchor tag
+    event.preventDefault();
+
+    // Your existing toggle logic for the heart button
+    var favbtn = document.getElementById("favbtn7");
+    favbtn.classList.toggle("fav-active");
+
+    // Optional: change the button color or style
+    if (favbtn.classList.contains("fav-active")) {
+        favbtn.style.color = "red"; // Example: Change color when active
+    } else {
+        favbtn.style.color = ""; // Reset color when inactive
+    }
+
+    // Send the data to the Flask server using fetch
+    var isFavorited = favbtn.classList.contains("fav-active");
+    fetch('/toggle-favorite', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+            tool_name: toolName,
+            description: description,
+            icon_text: iconText,
+            is_favorited: isFavorited,
+            href: href,
+        })
+    })
+    .then(response => response.json())
+    .then(data => {
+        console.log(data.message); // Log the response message from the server
+    })
+    .catch(error => console.error('Error:', error));
+}
+
+
+function FavButton8(event, toolName, description, iconText, href) {
+    // Prevents the default behavior of the anchor tag
+    event.preventDefault();
+
+    // Your existing toggle logic for the heart button
+    var favbtn = document.getElementById("favbtn8");
+    favbtn.classList.toggle("fav-active");
+
+    // Optional: change the button color or style
+    if (favbtn.classList.contains("fav-active")) {
+        favbtn.style.color = "red"; // Example: Change color when active
+    } else {
+        favbtn.style.color = ""; // Reset color when inactive
+    }
+
+    // Send the data to the Flask server using fetch
+    var isFavorited = favbtn.classList.contains("fav-active");
+    fetch('/toggle-favorite', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+            tool_name: toolName,
+            description: description,
+            icon_text: iconText,
+            is_favorited: isFavorited,
+            href: href,
+        })
+    })
+    .then(response => response.json())
+    .then(data => {
+        console.log(data.message); // Log the response message from the server
+    })
+    .catch(error => console.error('Error:', error));
+}
+
+
+function FavButton9(event, toolName, description, iconText, href) {
+    // Prevents the default behavior of the anchor tag
+    event.preventDefault();
+
+    // Your existing toggle logic for the heart button
+    var favbtn = document.getElementById("favbtn9");
+    favbtn.classList.toggle("fav-active");
+
+    // Optional: change the button color or style
+    if (favbtn.classList.contains("fav-active")) {
+        favbtn.style.color = "red"; // Example: Change color when active
+    } else {
+        favbtn.style.color = ""; // Reset color when inactive
+    }
+
+    // Send the data to the Flask server using fetch
+    var isFavorited = favbtn.classList.contains("fav-active");
+    fetch('/toggle-favorite', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+            tool_name: toolName,
+            description: description,
+            icon_text: iconText,
+            is_favorited: isFavorited,
+            href: href,
+        })
+    })
+    .then(response => response.json())
+    .then(data => {
+        console.log(data.message); // Log the response message from the server
+    })
+    .catch(error => console.error('Error:', error));
+}
+
+
+function FavButton10(event, toolName, description, iconText, href) {
+    // Prevents the default behavior of the anchor tag
+    event.preventDefault();
+
+    // Your existing toggle logic for the heart button
+    var favbtn = document.getElementById("favbtn10");
+    favbtn.classList.toggle("fav-active");
+
+    // Optional: change the button color or style
+    if (favbtn.classList.contains("fav-active")) {
+        favbtn.style.color = "red"; // Example: Change color when active
+    } else {
+        favbtn.style.color = ""; // Reset color when inactive
+    }
+
+    // Send the data to the Flask server using fetch
+    var isFavorited = favbtn.classList.contains("fav-active");
+    fetch('/toggle-favorite', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+            tool_name: toolName,
+            description: description,
+            icon_text: iconText,
+            is_favorited: isFavorited,
+            href: href,
+        })
+    })
+    .then(response => response.json())
+    .then(data => {
+        console.log(data.message); // Log the response message from the server
+    })
+    .catch(error => console.error('Error:', error));
+}
+
+
+// Listen for changes in the navbar toggle
+navToggle.addEventListener('change', function() {
+  if (navToggle.checked) {
+    parentContainer.style.marginRight = `${navbarrightCollapsed}px`;
+    parentContainer.style.marginLeft = `${navbarWidthCollapsed}px`; // Add space for collapsed navbar
+    parentContainer.style.transition = "margin-left 0.3s ease";
+  } else {
+    // Navbar is collapsed
+    parentContainer.style.marginRight = `${navbarRightExpanded}px`;
+    parentContainer.style.marginLeft = `${navbarWidthExpanded}px`; // Add space for expanded navbar
+    parentContainer.style.transition = "margin-left 0.3s ease"; // Smooth transition
+  }
+});
+
+
+
+window.onload = function() {
+    // Get all favorite buttons
+    const favButtons = document.querySelectorAll('.favbtn');
+    
+    favButtons.forEach(button => {
+        const isFavorited = button.getAttribute('data-favorited') === 'true';
+        
+        if (isFavorited) {
+            button.classList.add('fav-active');
+            button.style.color = "red"; // Or any style to indicate it's favorited
+        }
+    });
+}
+
+
+
+
+
+
+// Optionally, add a resize event listener to ensure responsiveness when resizing the window
+window.addEventListener('resize', function() {
+  if (window.innerWidth < 768) {
+    // Maybe adjust the layout for mobile/tablet views
+    parentContainer.style.marginLeft = '0'; // Reset for small screens
+  }
+});
+
+
+  // Initialize active page highlighting
+  highlightActivePage();
+
+
+// Add hover effect for all buttons
+navButtons.forEach(button => {
+    button.addEventListener('mouseenter', () => {
+        button.style.color = 'blue';
+        const icon = button.querySelector('i');
+        if (icon) {
+            icon.style.color = 'blue';
+        }
+    });
+
+
+    button.addEventListener('mouseleave', () => {
+        if (!button.classList.contains('active')) {
+            button.style.color = ''; // Reset to original color if not active
+            const icon = button.querySelector('i');
+            if (icon) {
+                icon.style.color = '';
+            }
+        }
+    });
+
+
+    // Ensure active button keeps the blue color
+    button.addEventListener('click', () => {
+        navButtons.forEach(b => b.classList.remove('active')); // Remove active class from all
+        button.classList.add('active'); // Add active class to clicked button
+        highlightActivePage(); // Update highlighted state
+    });
+});
+  </script>
+ 
+</body>
+</html>
+
+
