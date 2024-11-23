@@ -1,0 +1,39 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='index.css') }}">
+    <title>CodeCrypt</title>
+</head>
+<body>
+    <!-- Navbar Section -->
+    <nav class="navbar">
+        <div class="navbar-left">
+            <img src="{{ url_for('static', filename='images/logo.png') }}" alt="Logo" class="login-logo">
+            <h1>CodeCrypt</h1>
+        </div>
+        <div class="navbar-right">
+            <a href="{{ url_for('login') }}" class="navbar-button login-button">Login</a>
+            <a href="{{ url_for('register') }}" class="navbar-button">Sign Up</a>
+        </div>
+    </nav>
+
+
+    <!-- Welcome Section -->
+    <div class="welcome-container">
+        <h1>Welcome to CodeCrypt</h1>
+        <p>"Encrypt It, Decrypt It, Keep It Safe with CodeCrypt"</p>
+        <div class="button-container">
+            <a href="{{ url_for('register') }}" class="button">Start Encrypting</a>
+        </div>
+    </div>
+
+
+    <!-- Linear Background Section -->
+    <div class="linear-background"></div>
+</body>
+</html>
+
+
