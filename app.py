@@ -15,7 +15,6 @@ app = Flask(__name__)
 app.secret_key = os.urandom(24)
 s = URLSafeTimedSerializer(app.secret_key) 
 
-# Database connection
 db = mysql.connector.connect(
     host="localhost",
     user="root",  
@@ -24,7 +23,6 @@ db = mysql.connector.connect(
 )
 cursor = db.cursor()
 
-# Flask-Mail setup
 app.config['MAIL_SERVER'] = 'smtp.gmail.com'
 app.config['MAIL_PORT'] = 465  # SSL
 app.config['MAIL_USE_SSL'] = True
@@ -37,6 +35,7 @@ mail = Mail(app)
 @app.route('/')
 def index():
     return render_template('index.html')
+
 
 @app.route('/register', methods=['GET', 'POST'])
 def register():
@@ -111,7 +110,6 @@ def send_reset_email(user_email, reset_token, username):
         mail.send(msg)
     except Exception as e:
         print(f"Error sending email: {e}")
-
 
 
 
@@ -217,15 +215,10 @@ def reset_password(token):
     return render_template('reset_password.html', token=token)
 
 
-
-
-
-# Homepage Route
 @app.route('/homepage')
 def homepage():
-    # Ensure the user is logged in
     if 'user_id' not in session:
-        return redirect(url_for('login'))  # Redirect to login page if not logged in
+        return redirect(url_for('login')) 
 
     user_id = session['user_id']
     username = session['username']
@@ -263,60 +256,52 @@ def homepage():
     print("Favorite Ciphers:", favorite_ciphers)
     
     return render_template('homepage.html', username=username, email=email, name=name, user_id=user_id, favorite_ciphers=favorite_ciphers)
-
-
-# CHANGE PASSWORD 
+ 
+ 
 @app.route("/changepassword", methods=["POST"])
 def change_password():
     if request.method == "POST":
-        user_id = session.get("user_id")  # Assuming user_id is stored in the session
+        user_id = session.get("user_id") 
 
-        # Retrieve current password, new password, and confirm password from the form
         current_password = request.form["currentPassword"]
         new_password = request.form["newPassword"]
         confirm_password = request.form["confirmPassword"]
 
-        # Fetch the current hashed password from the database for the logged-in user
         cursor.execute("SELECT password FROM users WHERE user_id = %s", (user_id,))
         user_data = cursor.fetchone()
 
         if user_data:
-            hashed_password = user_data[0]  # Assuming password is stored as hashed
+            hashed_password = user_data[0]  
 
-            # Check if the current password is correct
             if not check_password_hash(hashed_password, current_password):
                 flash("Current password is incorrect.", "error")
-                return redirect(url_for("homepage"))  # Redirect to homepage after flash message
+                return redirect(url_for("homepage")) 
 
-            # Check if current password and new password are the same
             if current_password == new_password:
                 flash("Current password and new password cannot be the same.", "error")
                 return redirect(url_for("homepage"))
 
-            # Check if new password and confirmation match
             if new_password != confirm_password:
                 flash("New password and confirmation do not match.", "error")
                 return redirect(url_for("homepage"))
-
-            # Hash the new password and update it in the database
+            
             hashed_new_password = generate_password_hash(new_password)
             cursor.execute("UPDATE users SET password = %s WHERE user_id = %s", (hashed_new_password, user_id))
             db.commit()
             flash("Password changed successfully!", "success")
-            return redirect(url_for("homepage"))  # Redirect after successful password change
+            return redirect(url_for("homepage")) 
 
         flash("User not found.", "error")
-        return redirect(url_for("homepage"))  # Redirect if user is not found
+        return redirect(url_for("homepage")) 
 
     return redirect(url_for("homepage"))
-
 
 
 @app.route('/changename', methods=['POST'])
 def change_name():
     if request.method == "POST":
         if 'user_id' not in session:
-            return redirect(url_for('login'))  # Redirect if the user is not logged in
+            return redirect(url_for('login'))  
 
         user_id = session['user_id']
         new_name = request.form['newName']
@@ -349,7 +334,7 @@ def change_name():
 def change_username():
     if request.method == "POST": 
         if 'user_id' not in session:
-            return redirect(url_for('login'))  # Redirect if the user is not logged in
+            return redirect(url_for('login'))  
 
         user_id = session['user_id']
         current_username = session.get('username')
@@ -382,10 +367,6 @@ def change_username():
     return redirect(url_for('homepage'))
 
 
-
-
-
-# Atbash Cipher
 def atbash_cipher(text):
     alphabet_upper = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'
     reversed_alphabet_upper = 'ZYXWVUTSRQPONMLKJIHGFEDCBA'
@@ -418,7 +399,6 @@ def atbash():
     if user_id:
         username = session.get('username', 'Guest')
 
-        # Fetch email and name from the database
         cursor.execute("SELECT email FROM users WHERE user_id = %s", (user_id,))
         email_result = cursor.fetchone()
         if email_result:
@@ -433,12 +413,10 @@ def atbash():
         else:
             name = 'Error fetching.'
 
-    # Handle POST request for encryption/decryption
     if request.method == 'POST':
        
         user_id = session.get('user_id')
         if not user_id:
-            # flash("Please log in to perform this action.")
             return redirect(url_for('login'))
         
        
@@ -455,21 +433,17 @@ def atbash():
         elif mode == 'toText':
             mode_id = 'Atbash Cipher to Text'
 
-        # Get the input text from the form
         text = request.form['input_text']
 
-        # Call the atbash cipher function to process the text
         result = atbash_cipher(text)
 
-        # Insert the history into the database
-        crypt_id = 'Atbash Cipher'  # Atbash cipher identifier
+        crypt_id = 'Atbash Cipher' 
      
         insert_history(user_id, crypt_id, mode_id, None, None, None, None, None, text, result)
 
     return render_template('atbash.html', result=result, email=email, username=username, name=name, user_id=user_id)
 
 
-# Caesar Cipher
 def caesar_encrypt(text, shift):
     encrypted = ""
     for char in text:
@@ -483,6 +457,7 @@ def caesar_encrypt(text, shift):
 def caesar_decrypt(text, shift):
     return caesar_encrypt(text, -shift)
 
+
 @app.route('/caesar', methods=['GET', 'POST'])
 def caesar_cipher():
     result = ""
@@ -494,7 +469,6 @@ def caesar_cipher():
     if user_id:
         username = session.get('username', 'Guest')
 
-        # Fetch email and name from the database
         cursor.execute("SELECT email FROM users WHERE user_id = %s", (user_id,))
         email_result = cursor.fetchone()
         if email_result:
@@ -513,36 +487,30 @@ def caesar_cipher():
          
         user_id = session.get('user_id')
         if not user_id:
-            # flash("Please log in to perform this action.")
             return redirect(url_for('login'))
         
-        # Get the mode selected by the user
         mode = request.form.get('mode')
-        
-        # If no mode is selected, flash an error message and do not process further
+
         if not mode:
             flash("Please select an option before entering text.")
-            return redirect(url_for('caesar'))  # Stay on the current page
-        
-        # Get shift and input text from form
-        shift = int(request.form.get('shift', 3))  # Default shift is 3
+            return redirect(url_for('caesar')) 
+
+        shift = int(request.form.get('shift', 3))  
         input_text = request.form.get('input_text', '')
 
-        # Perform encryption or decryption based on selected mode
         if mode == 'toCipher':
             mode_id = 'Text to Caesar Cipher'
             result = caesar_encrypt(input_text, shift)
         elif mode == 'toText':
             mode_id = 'Caesar Cipher to Text'
             result = caesar_decrypt(input_text, shift)
-    
-        # Insert the operation into the history
+            
         crypt_id = 'Caesar Cipher'
         insert_history(user_id, crypt_id, mode_id, None, None, shift, None, None, input_text, result)
 
     return render_template('caesar.html', result=result, email=email, username=username, name=name, user_id=user_id)
 
-# Binary Encoding and Decoding
+
 @app.route('/binary', methods=['GET', 'POST'])
 def binary_code():
     result = ""
@@ -554,7 +522,6 @@ def binary_code():
     if user_id:
         username = session.get('username', 'Guest')
 
-        # Fetch email and name from the database
         cursor.execute("SELECT email FROM users WHERE user_id = %s", (user_id,))
         email_result = cursor.fetchone()
         if email_result:
@@ -570,13 +537,10 @@ def binary_code():
             name = 'Error fetching.'
 
     if request.method == 'POST':
-        # Check if user_id is available in session
         user_id = session.get('user_id')
         if not user_id:
-            # flash("Please log in to perform this action.")
             return redirect(url_for('login'))
         
-        # Get the mode selected by the user
         mode = request.form.get('mode')
         input_text = request.form.get('input_text', '')
         crypt_id = 'Binary Encoding' 
@@ -595,7 +559,6 @@ def binary_code():
 
     return render_template('binary.html', result=result, email=email, username=username, name=name, user_id=user_id)
 
-# Affine Cipher Encryption
 def affine_encrypt(text, a, b):
     result = ""
     for char in text:
@@ -607,12 +570,11 @@ def affine_encrypt(text, a, b):
             result += char 
     return result
 
-# Affine Cipher Decryption
+
 def affine_decrypt(text, a, b):
     result = ""
     a_inv = None
     
-    # Find modular inverse of a
     for i in range(26):
         if (a * i) % 26 == 1:
             a_inv = i
@@ -624,15 +586,15 @@ def affine_decrypt(text, a, b):
     for char in text:
         if char.isalpha():
             shift_base = 65 if char.isupper() else 97
-            # Apply decryption formula to reverse encryption
+   
             decrypted_char = (a_inv * ((ord(char) - shift_base - b) % 26)) % 26 + shift_base
-            result += chr(decrypted_char)  # Convert back to character
+            result += chr(decrypted_char) 
         else:
-            result += char  # Non-alphabetic characters are added unchanged
+            result += char 
 
     return result
 
-# Affine Cipher
+
 @app.route('/affine', methods=['GET', 'POST'])
 def affine_cipher():
     result = ""
@@ -644,7 +606,6 @@ def affine_cipher():
     if user_id:
         username = session.get('username', 'Guest')
 
-        # Fetch email and name from the database
         cursor.execute("SELECT email FROM users WHERE user_id = %s", (user_id,))
         email_result = cursor.fetchone()
         if email_result:
@@ -659,10 +620,8 @@ def affine_cipher():
         else:
             name = 'Error fetching.'
 
-    # Handle POST request for encryption/decryption
     if request.method == 'POST':
         if not user_id:
-            # flash("Please log in to perform this action.")
             return redirect(url_for('login'))
 
         mode = request.form.get('mode')
@@ -670,39 +629,37 @@ def affine_cipher():
         a_value = int(request.form.get('a_value', '1'))
         b_value = int(request.form.get('b_value', '0'))
 
-        # Ensure a_value is within the valid range and coprime to 26
+    
         a_value = a_value % 26
         if a_value not in [1, 3, 5, 7, 9, 11, 15, 17, 19, 21, 23, 25]:
             result = "The 'a' value must be an odd number that is coprime to 26."
         else:
-            # Ensure b_value is at least 1
+    
             if b_value < 1:
-                b_value = 1  # Set to 1 if it's less than 1
+                b_value = 1 
 
             try:
-                # Perform encryption or decryption
+              
                 if mode == 'encrypt':
                     result = affine_encrypt(input_text, a_value, b_value)
                 elif mode == 'decrypt':
                     result = affine_decrypt(input_text, a_value, b_value)
 
-                # Define mode_id based on the operation
+               
                 mode_id = 'Text to Affine Cipher' if mode == 'encrypt' else 'Affine Cipher to Text'
                 crypt_id = 'Affine Cipher'
 
-                # Insert history into the database
+             
                 insert_history(user_id, crypt_id, mode_id, a_value, b_value, None, None, None, input_text, result)
 
             except ValueError as e:
-                result = str(e)  # Handle errors
+                result = str(e)  
 
-    # Render the template with all variables
     return render_template('affine.html', result=result, email=email, username=username, name=name, user_id=user_id)
 
 
 
 
-# Base64 Encoding and Decoding
 @app.route('/base64', methods=['GET', 'POST'])
 def base64_encode_decode():
     result = ""
@@ -714,7 +671,6 @@ def base64_encode_decode():
     if user_id:
         username = session.get('username', 'Guest')
 
-        # Fetch email and name from the database
         cursor.execute("SELECT email FROM users WHERE user_id = %s", (user_id,))
         email_result = cursor.fetchone()
         if email_result:
@@ -729,19 +685,18 @@ def base64_encode_decode():
         else:
             name = 'Error fetching.'
     if request.method == 'POST':
-        # Check if user_id is available in session
+      
         user_id = session.get('user_id')
         if not user_id:
-            # flash("Please log in to perform this action.")
+      
             return redirect(url_for('login'))
         
-        # Get the mode selected by the user
         mode = request.form.get('mode')
         
-        # If no mode is selected, flash an error message and do not process further
+   
         if not mode:
             flash("Please select an option before entering text.")
-            return redirect(url_for('base64'))  # Stay on the current page
+            return redirect(url_for('base64')) 
 
         input_text = request.form.get('input_text', '')
 
@@ -761,7 +716,8 @@ def base64_encode_decode():
 
     return render_template('base64.html', result=result, email=email, username=username, name=name, user_id=user_id)
 
-# Hexadecimal Encoding
+
+
 @app.route('/hexadecimal', methods=['GET', 'POST'])
 def hexadecimal():
     result = ""
@@ -773,7 +729,7 @@ def hexadecimal():
     if user_id:
         username = session.get('username', 'Guest')
 
-        # Fetch email and name from the database
+
         cursor.execute("SELECT email FROM users WHERE user_id = %s", (user_id,))
         email_result = cursor.fetchone()
         if email_result:
@@ -791,7 +747,7 @@ def hexadecimal():
           
         user_id = session.get('user_id')
         if not user_id:
-            # flash("Please log in to perform this action.")
+       
             return redirect(url_for('login'))
    
         mode = request.form.get('mode')
@@ -829,21 +785,21 @@ morse_code_dict = {
     '9': '----.', '0': '-----', ' ': '/'
 }
 
-# Reverse dictionary for decoding
+
 morse_code_dict_reversed = {value: key for key, value in morse_code_dict.items()}
 
 def encode_to_morse(text):
     return ' '.join(morse_code_dict.get(char.upper(), '') for char in text)
 
 def decode_from_morse(morse_code):
-    # Remove leading and trailing spaces
+
     morse_code = morse_code.strip()
     
-    # Return an error if the input is empty after trimming
+   
     if not morse_code:
         return "Error. Invalid input. Please enter again."
     
-    # Check if the input contains only valid Morse code characters (., -, and space)
+   
     if any(char not in ['.', '-', ' '] for char in morse_code):
         return "Error. Invalid input. Please enter again."
     
@@ -851,11 +807,12 @@ def decode_from_morse(morse_code):
     for code in morse_code.split(' '):
         if code in morse_code_dict_reversed:
             decoded_message.append(morse_code_dict_reversed[code])
-        elif code == '/':  # Add space for word separation if '/' is used
+        elif code == '/':
             decoded_message.append(' ')
         else:
             return "Error. Invalid input. Please enter again."
     return ''.join(decoded_message)
+
 
 @app.route('/morse', methods=['GET', 'POST'])
 def morse():
@@ -868,7 +825,6 @@ def morse():
     if user_id:
         username = session.get('username', 'Guest')
 
-        # Fetch email and name from the database
         cursor.execute("SELECT email FROM users WHERE user_id = %s", (user_id,))
         email_result = cursor.fetchone()
         if email_result:
@@ -887,7 +843,7 @@ def morse():
   
         user_id = session.get('user_id')
         if not user_id:
-            # flash("Please log in to perform this action.")
+           
             return redirect(url_for('login'))
    
         mode = request.form.get('mode')
@@ -896,7 +852,7 @@ def morse():
             flash("Please select an option before entering text.")
             return redirect(url_for('morse'))
         
-        # Remove leading and trailing whitespace
+      
         input_text = request.form.get('input_text', '').strip()
 
         if mode == 'encode':
@@ -913,9 +869,6 @@ def morse():
 
 
 
-
-# Railfence Cipher
-
 @app.route('/railfence', methods=['GET', 'POST'])
 def railfence():
     result = ""
@@ -927,7 +880,7 @@ def railfence():
     if user_id:
         username = session.get('username', 'Guest')
 
-        # Fetch email and name from the database
+   
         cursor.execute("SELECT email FROM users WHERE user_id = %s", (user_id,))
         email_result = cursor.fetchone()
         if email_result:
@@ -945,7 +898,7 @@ def railfence():
          
         user_id = session.get('user_id')
         if not user_id:
-            # flash("Please log in to perform this action.")
+           
             return redirect(url_for('login'))
         
         text = request.form.get('input_text', '').strip()
@@ -990,12 +943,11 @@ def railfence_encrypt(text, num_rails):
     return ''.join(rails)
 
 def railfence_decrypt(text, num_rails):
-    # Calculate the pattern of the rail
+   
     length = len(text)
     rails = [['' for _ in range(length)] for _ in range(num_rails)]
     idx, direction_down = 0, False
 
-    # Mark positions to place characters
     for i in range(length):
         rails[idx][i] = '*'
         if idx == 0:
@@ -1004,7 +956,6 @@ def railfence_decrypt(text, num_rails):
             direction_down = False
         idx += 1 if direction_down else -1
 
-    # Place characters in marked positions
     idx = 0
     for i in range(num_rails):
         for j in range(length):
@@ -1012,7 +963,7 @@ def railfence_decrypt(text, num_rails):
                 rails[i][j] = text[idx]
                 idx += 1
 
-    # Read the characters in a zigzag pattern
+   
     result = []
     idx, direction_down = 0, False
     for i in range(length):
@@ -1027,7 +978,7 @@ def railfence_decrypt(text, num_rails):
 
 
 
-# ROT13 Cipher
+
 def rot13_cipher(text):
     result = ""
     for char in text:
@@ -1036,10 +987,10 @@ def rot13_cipher(text):
         elif 'a' <= char <= 'z':
             result += chr((ord(char) - ord('a') + 13) % 26 + ord('a'))
         else:
-            result += char  # Keep non-alphabet characters as is
+            result += char  
     return result
 
-# ROT13 Cipher
+
 @app.route('/rot13', methods=['GET', 'POST'])
 def rot13():
     result = ""
@@ -1051,7 +1002,7 @@ def rot13():
     if user_id:
         username = session.get('username', 'Guest')
 
-        # Fetch email and name from the database
+      
         cursor.execute("SELECT email FROM users WHERE user_id = %s", (user_id,))
         email_result = cursor.fetchone()
         if email_result:
@@ -1069,19 +1020,19 @@ def rot13():
     if request.method == 'POST':
         user_id = session.get('user_id')
         if not user_id:
-            # flash("Please log in to perform this action.")
+           
             return redirect(url_for('login'))
 
         mode = request.form.get('mode')
         
-        # If no mode is selected, flash an error message and do not process further
+        
         if not mode:
             flash("Please select an option before entering text.")
             return redirect(url_for('rot13'))  
 
         text = request.form.get('input_text', '').strip()
 
-        # Determine the mode of operation and process accordingly
+    
         if mode == 'encode':
             mode_id = 'Text to ROT13 Cipher'
             result = rot13_cipher(text)
@@ -1089,7 +1040,7 @@ def rot13():
             mode_id = 'ROT13 Cipher to Text'
             result = rot13_cipher(text)
 
-        # Record the action in the history
+    
         crypt_id = 'ROT13 Cipher'
         insert_history(user_id, crypt_id, mode_id, None, None, None, None, None, text, result)
 
@@ -1102,15 +1053,15 @@ def vigenere_cipher(text, keyword, mode="encode"):
     keyword_repeated = ""
     keyword_index = 0
 
-    # Build keyword_repeated only for alphabetic characters
+    
     for char in text:
         if char.isalpha():
             keyword_repeated += keyword[keyword_index % len(keyword)].upper()
             keyword_index += 1
         else:
-            keyword_repeated += ' '  # Placeholder for non-alphabetic characters
+            keyword_repeated += ' '  
 
-    # Process each character in the text
+ 
     for i, char in enumerate(text):
         if char.isalpha():
             shift = ord(keyword_repeated[i]) - ord('A')
@@ -1135,7 +1086,7 @@ def vigenere():
     if user_id:
         username = session.get('username', 'Guest')
 
-        # Fetch email and name from the database
+
         cursor.execute("SELECT email FROM users WHERE user_id = %s", (user_id,))
         email_result = cursor.fetchone()
         if email_result:
@@ -1154,18 +1105,18 @@ def vigenere():
          
         user_id = session.get('user_id')
         if not user_id:
-            # flash("Please log in to perform this action.")
+           
             return redirect(url_for('login'))
         
-        # Get the mode selected by the user
+        
         mode = request.form.get('mode')
         
-        # If no mode is selected, flash an error message and do not process further
+        
         if not mode:
             flash("Please select an option before entering text.")
-            return redirect(url_for('vigenere'))  # Stay on the current page
+            return redirect(url_for('vigenere'))  
         
-        # Get shift and input text from form
+       
         keyword = request.form.get('keyword', 'key').upper()
         text = request.form.get('input_text', '')
 
@@ -1188,15 +1139,15 @@ def insert_history(user_id, crypt_id, mode_id, a_value=None, b_value=None, shift
     try:
         if output_text == "Error. Invalid input. Please enter again.":
             return  
-        # Fetch the crypt_id for Affine Cipher (or any cipher)
+     
         cursor.execute("SELECT crypt_id FROM ciphers WHERE type_of_tool = %s", (crypt_id,))
         crypt_id = cursor.fetchone()[0]
 
-        # Fetch the mode_id for the selected conversion
+       
         cursor.execute("SELECT mode_id FROM conversion WHERE type_of_conversion = %s", (mode_id,))
         mode_id = cursor.fetchone()[0]
 
-        # Generate a unique history_id (e.g., histo00001, histo00002, ...)
+       
         cursor.execute("SELECT MAX(history_id) FROM history")
         max_history_id = cursor.fetchone()[0]
         if max_history_id:
@@ -1205,11 +1156,11 @@ def insert_history(user_id, crypt_id, mode_id, a_value=None, b_value=None, shift
         else:
             new_history_id = "histo00001"
 
-        # Prepare the SQL query dynamically based on available parameters
+       
         columns = ["history_id", "user_id", "crypt_id", "mode_id", "input", "output"]
         values = [new_history_id, user_id, crypt_id, mode_id, input_text, output_text]
         
-        # Add optional columns and values
+        
         if a_value is not None:
             columns.append("a_value")
             values.append(a_value)
@@ -1220,17 +1171,17 @@ def insert_history(user_id, crypt_id, mode_id, a_value=None, b_value=None, shift
             columns.append("shift")
             values.append(shift)
         if key is not None:
-            columns.append("`key`")  # Use backticks for reserved keyword 'key'
+            columns.append("`key`")  
             values.append(key)
         if rail is not None:
             columns.append("rail")
             values.append(rail)
 
-        # Construct the dynamic insert query
+      
         sql_query = f"INSERT INTO history ({', '.join(columns)}) VALUES ({', '.join(['%s'] * len(values))})"
         cursor.execute(sql_query, values)
 
-        # Commit the changes to the database
+      
         db.commit()
 
     except Exception as e:
@@ -1241,7 +1192,7 @@ def insert_history(user_id, crypt_id, mode_id, a_value=None, b_value=None, shift
 
 @app.route('/allhistory', methods=['GET'])
 def all_history():
-    # Check if user_id is available in session
+   
     email = None  
     name = None  
     username = None 
@@ -1250,7 +1201,7 @@ def all_history():
     if user_id:
         username = session.get('username', 'Guest')
 
-        # Fetch email and name from the database
+        
         cursor.execute("SELECT email FROM users WHERE user_id = %s", (user_id,))
         email_result = cursor.fetchone()
         if email_result:
@@ -1269,19 +1220,18 @@ def all_history():
         flash("Please log in to view your history.")
         return redirect(url_for('login'))
 
-    # Get filter and sort parameters from the request
-    cipher_type = request.args.get('cipher_type', '')
-    sort_order = request.args.get('sort_order', 'recent')  # Default to 'recent' if not provided
 
-    # Construct WHERE clause for cipher type filter
+    cipher_type = request.args.get('cipher_type', '')
+    sort_order = request.args.get('sort_order', 'recent')  
+
     cipher_filter = ""
     if cipher_type:
         cipher_filter = "AND c.type_of_tool = %s"
     
-    # Set sorting order based on sort_order input
+   
     order_by = "ORDER BY h.date_time DESC" if sort_order == 'recent' else "ORDER BY h.date_time ASC"
 
-    # SQL query to get the conversion history for the logged-in user, with filtering and sorting
+    
     query = f'''
     SELECT h.date_time, h.crypt_id, h.mode_id, h.input, h.output, h.shift, h.key, h.a_value, h.b_value, h.rail, c.type_of_tool, co.type_of_conversion
     FROM history h
@@ -1291,7 +1241,7 @@ def all_history():
     {order_by}
     '''
     
-    # Execute the query with parameters
+   
     params = (user_id,)
     if cipher_type:
         params += (cipher_type,)
@@ -1299,7 +1249,7 @@ def all_history():
     cursor.execute(query, params)
     history_records = cursor.fetchall()
 
-    # Process the conversion types for display
+
     history = []
     for record in history_records:
         conversion_type = record[10]
@@ -1324,10 +1274,10 @@ def all_history():
         if record[9] is not None:
             history_entry['rail'] = record[9]
 
-        # Add the entry to the history list
+        
         history.append(history_entry)
 
-    # Render the history page template with the conversion history
+   
     return render_template('allhistory.html', history=history, email=email, username=username, name=name)
 
 
@@ -1343,7 +1293,7 @@ def toggle_favorite():
     if user_id is None:
         return jsonify({"message": "User not logged in."}), 401
 
-    # Get the data from the request
+   
     data = request.get_json()
     tool_name = data.get('tool_name')
     description = data.get('description')
@@ -1351,7 +1301,7 @@ def toggle_favorite():
     is_favorited = data.get('is_favorited')
     href = data.get('href')
 
-    # Query to find the crypt_id of the tool
+    
     cursor.execute("SELECT crypt_id FROM ciphers WHERE type_of_tool = %s", (tool_name,))
     cipher = cursor.fetchone()
 
@@ -1359,7 +1309,7 @@ def toggle_favorite():
         crypt_id = cipher[0]
 
         if is_favorited:
-            # Check if this favorite already exists
+         
             cursor.execute(
                 "SELECT * FROM favorites WHERE user_id = %s AND crypt_id = %s",
                 (user_id, crypt_id)
@@ -1367,20 +1317,20 @@ def toggle_favorite():
             existing_favorite = cursor.fetchone()
 
             if not existing_favorite:
-                # Generate the next fav_id in the format "FAV0001", "FAV0002", etc.
+                
                 cursor.execute("SELECT fav_id FROM favorites ORDER BY fav_id DESC LIMIT 1")
                 result = cursor.fetchone()
                 if result:
-                    # Increment the numeric part of the last fav_id
+                
                     last_id = int(result[0][3:])
                     next_id = last_id + 1
                 else:
-                    # If no rows exist, start with 1
+                   
                     next_id = 1
 
-                fav_id = f"FAV{next_id:04d}"  # Format as "FAV0001", "FAV0002", etc.
+                fav_id = f"FAV{next_id:04d}"  
 
-                # Insert into favorites if not already present
+        
                 cursor.execute("""
                     INSERT INTO favorites (fav_id, user_id, crypt_id, description, icon_text, href)
                     VALUES (%s, %s, %s, %s, %s, %s)
@@ -1391,7 +1341,7 @@ def toggle_favorite():
                 return jsonify({"message": f"{tool_name} is already in favorites."})
 
         else:
-            # Delete from favorites if toggled off
+            
             cursor.execute("DELETE FROM favorites WHERE user_id = %s AND crypt_id = %s", (user_id, crypt_id))
             db.commit()
             return jsonify({"message": f"Removed {tool_name} from favorites."})
@@ -1400,9 +1350,6 @@ def toggle_favorite():
 
 
 
-
-
-# Route for displaying favorites
 @app.route('/favorites')
 def favorites():
      
@@ -1414,7 +1361,7 @@ def favorites():
     if user_id:
         username = session.get('username', 'Guest')
 
-        # Fetch email and name from the database
+        
         cursor.execute("SELECT email FROM users WHERE user_id = %s", (user_id,))
         email_result = cursor.fetchone()
         if email_result:
@@ -1433,7 +1380,7 @@ def favorites():
         return redirect(url_for('login'))
 
 
-    # Query to fetch the user's favorite ciphers and related data
+    
     cursor.execute("""
         SELECT c.type_of_tool, f.description, f.icon_text, f.href
         FROM favorites f
@@ -1445,17 +1392,14 @@ def favorites():
 
     
     if favorites:
-        # Render the page with the list of favorites if available
+        
         return render_template('favorites.html', favorites=favorites, email=email, username=username, name=name)
     else:
-        # Display a message if the user has no favorites
+       
         flash("You don't have any favorites yet. Add some from the homepage!")
         return render_template('favorites.html', favorites=[], email=email, username=username, name=name)
 
 
-
-
-# COntacts
 @app.route('/contacts')
 def contacts():
     email = None  
@@ -1466,7 +1410,6 @@ def contacts():
     if user_id:
         username = session.get('username', 'Guest')
 
-        # Fetch email and name from the database
         cursor.execute("SELECT email FROM users WHERE user_id = %s", (user_id,))
         email_result = cursor.fetchone()
         if email_result:
@@ -1489,8 +1432,6 @@ def contacts():
 
 
 
-
-# Logout Route
 @app.route('/logout')
 def logout():
     session.pop('username', None)
@@ -1498,6 +1439,6 @@ def logout():
     session.clear()
     return redirect(url_for('login'))
 
-# Run the app
+
 if __name__ == '__main__':
     app.run(debug=True)
