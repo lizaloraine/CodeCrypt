@@ -19,16 +19,16 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
 </head>
 <body>
-    <!-- Header -->
+    
     <header>
         <div class="header-right">
             <a href="/logout" class="logout-btn">Logout</a>
             <a href="#" class="profile-text" id="profile-icon">
-                <i class="fas fa-user-circle"></i> <!-- Profile Icon -->
+                <i class="fas fa-user-circle"></i> 
             </a>
-            <!-- Profile Dropdown Menu -->
+           
             <div class="profile-dropdown" id="profile-dropdown">
-                <!-- Account Details Text (non-clickable) -->
+                
                 <span class="account-details">Account Details</span>
                 
                 <div class="user-email">
@@ -41,7 +41,7 @@
                 </div>
     
                
-                <!-- Change Username Link -->
+                
                 <div class="user-username">
                     <i class="fas fa-user"></i>
                     <div class="username-details">
@@ -53,7 +53,7 @@
                 </div>
                 
 
-                <!-- Modal Structure for Change Username -->
+                
                 <div id="changeUsernameModal" class="modal">
                     <div class="modal-content">
                         <h2>Change Username</h2>
@@ -64,7 +64,7 @@
                         <label for="newUserame">Enter New Username:</label>
                         <input type="text" id="newUsername" name="newUsername" required><br>
 
-                        <!-- Flash Messages Container -->
+                        
                         <div class="flash-messages">
                             {% with messages = get_flashed_messages(with_categories=true) %}
                             {% if messages %}
@@ -86,7 +86,7 @@
                 </div>
 
 
-                <!-- Change Name Link -->
+                
                 <div class="user-name">
                     <i class="fas fa-pencil-alt"></i>
                     <div class="name-details">
@@ -97,7 +97,7 @@
                     </div>
                 </div>
 
-                 <!-- Modal Structure for Change Name -->
+                 
                  <div id="changeNameModal" class="modal">
                     <div class="modal-content">
                         <h2>Change Name</h2>
@@ -109,7 +109,7 @@
                         <label for="newName">Enter new name:</label>
                         <input type="text" id="newName" name="newName" required><br>
 
-                       <!-- Flash Messages Container -->
+                     
                        <div class="flash-messages-name">
                         {% with messages = get_flashed_messages(with_categories=true) %}
                         {% if messages %}
@@ -131,14 +131,13 @@
                 </div>
 
                
-               <!-- Change Password Link -->
                 <div class="user-password">
                 <a href="#" id="change-password-link" class="change-password">
                     <i class="fas fa-lock"></i> Change Password
                 </a>
                 </div>
 
-                <!-- Modal Structure for Change Password -->
+                
                 <div id="changePasswordModal" class="modal">
                     <div class="modal-content">
                         <h2>Change Password</h2>
@@ -152,7 +151,7 @@
                         <label for="confirmPassword">Confirm new password:</label>
                         <input type="password" id="confirmPassword" name="confirmPassword" required><br>
 
-                        <!-- Flash Messages Container -->
+                      
                         <div class="flash-messages-pw">
                             {% with messages = get_flashed_messages(with_categories=true) %}
                             {% if messages %}
@@ -193,7 +192,7 @@
 
     </header>
 
-    <!-- Second Navbar -->
+ 
     <div id="nav-bar">
         <input id="nav-toggle" type="checkbox"/>
         <div id="nav-header">
@@ -223,7 +222,7 @@
         </div>
     </div>
 
-    <!-- Main Content -->
+   
     <div class="parent-container">
         <div class="title-container">
             <h1>Favorites</h1>
@@ -235,13 +234,13 @@
                     <a href="/{{ fav[3] | lower | trim('/') }}" class="card">
                         <i class="{{ fav[2] }} icon"></i>
                         <div class="text">
-                            <h4>{{ fav[0] }}</h4>  <!-- type_of_tool -->
-                            <!-- Default favorite button active and red by default -->
+                            <h4>{{ fav[0] }}</h4>  
+                           
                             <button onclick="FavButton(event, '{{ fav[0] }}', '{{ fav[1] }}', '{{ fav[2] }}')" 
                                     class="favbtn fav-active" style="color: red;">
                                 <i class="fas fa-heart"></i>
                             </button>
-                            <p>{{ fav[1] }}</p>  <!-- description -->
+                            <p>{{ fav[1] }}</p>  
                         </div>
                     </a>
                 {% endfor %}
@@ -256,19 +255,19 @@
     </div>
 
     <script>
-        // Toggle favorite button functionality
+  
         function FavButton(event, toolName, description, iconText) {
             event.preventDefault();
             var favbtn = event.target.closest('button');
             favbtn.classList.toggle("fav-active");
 
             if (favbtn.classList.contains("fav-active")) {
-                favbtn.style.color = "red"; // Change color when active
+                favbtn.style.color = "red";
             } else {
-                favbtn.style.color = ""; // Reset color when inactive
+                favbtn.style.color = ""; 
             }
 
-            // Send the updated favorite status to the server
+            
             var isFavorited = favbtn.classList.contains("fav-active");
             fetch('/toggle-favorite', {
                 method: 'POST',
@@ -284,7 +283,7 @@
             })
             .then(response => response.json())
             .then(data => {
-                console.log(data.message); // Log the response message from the server
+                console.log(data.message); 
             })
             .catch(error => console.error('Error:', error));
         }
