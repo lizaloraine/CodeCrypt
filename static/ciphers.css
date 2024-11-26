@@ -116,19 +116,18 @@ html, body {
   transition: opacity 1s;
 }
 #nav-logo img {
-    width: 30px; /* Adjust size of the logo */
+    width: 30px; 
     height: auto;
     margin-right: 10px;
-    margin-left: 10px; /* Maintain aspect ratio */
+    margin-left: 10px; 
     transition: opacity 0.1s ease;
 }
 #nav-logo {
-    display: flex; /* Added: Flexbox for horizontal alignment of logo and heading */
+    display: flex; 
     align-items: center;
 }
 
 
-/* New rule for fading the logo when the toggle is clicked */
 #nav-toggle:checked ~ #nav-header #nav-logo {
   opacity: 0;
   transition: opacity 0.1s ease;
@@ -323,40 +322,36 @@ label[for=nav-toggle] {
 }
 
 
-/* Hover effect for navbar items (text and icon) */
 .nav-button:hover {
-  color: var( --navbar-dark-primary); /* Change text color to blue on hover */
+  color: var( --navbar-dark-primary); 
 }
 
 
 .nav-button:hover i {
-  color: var( --navbar-dark-primary); /* Change icon color to blue on hover */
+  color: var( --navbar-dark-primary); 
 }
 
 
 .nav-button:hover span {
-  color: var( --navbar-dark-primary); /* Change text color to blue on hover */
+  color: var( --navbar-dark-primary); 
 }
 
 
-/* Active navbar button style */
 .nav-button.active {
-  color: var( --navbar-dark-primary); /* Set text color to blue for active button */
+  color: var( --navbar-dark-primary); 
   background-color: white;
-  border-radius: 16px 0 0 16px ; /* Set background to white for visibility */
+  border-radius: 16px 0 0 16px ; 
 }
 
 
 .nav-button.active i {
-  color: var( --navbar-dark-primary); /* Set icon color to blue for active button */
+  color: var( --navbar-dark-primary);
 }
 
 
 .nav-button.active span {
-  color: var( --navbar-dark-primary); /* Set text color to blue for active button */
+  color: var( --navbar-dark-primary); 
 }
-
-
 
 
 header {
@@ -380,16 +375,12 @@ header {
 }
 
 
-
-
 .logout-btn, .profile-text {
     padding: 10px 15px;
     color: white;
     text-decoration: none;
     border-radius: 5px;
 }
-
-
 
 
 .logout-btn {
@@ -399,13 +390,9 @@ header {
 }
 
 
-
-
 .logout-btn:hover {
     background-color: #cc3b3b;
 }
-
-
 
 
 .profile-text {
@@ -416,7 +403,6 @@ header {
 
 }
 
-
 body {
   display: flex;
   font-family: 'Poppins', sans-serif;
@@ -425,26 +411,22 @@ body {
   height: 100vh;
   background-color: #f0f0f0;
 }
-/* Main content */
+
 .main-content {
-    margin-left: 220px; /* Space for the sidebar */
-    padding: 80px 40px; /* Adjust padding for alignment with header and sidebar */
+    margin-left: 220px; 
+    padding: 80px 40px; 
     text-align: center;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    min-height: calc(100vh - 72px); /* Ensure content fills screen height */
+    min-height: calc(100vh - 72px); 
 }
-
-
-
 
 .main-content h2 {
     font-size: 24px;
     margin-bottom: 20px;
 }
-
 
 .navbar {
   background-color: white;
@@ -458,7 +440,6 @@ body {
 
 }
 
-
 .nav-list {
   display: flex;
   list-style: none;
@@ -466,55 +447,45 @@ body {
  
 }
 
-
 .nav-item {
   position: relative;
  
 }
 
 .nav-item.active {
-    background-color: #005bea; /* Choose your preferred color */
-    color: white;  /* Change text color for better contrast */
+    background-color: #005bea; 
+    color: white; 
 }
 
 
-
 .options input[type="radio"] {
-  appearance: none; /* Remove the default browser styling */
-  -webkit-appearance: none; /* For Safari */
-  position: absolute; /* Hide the radio button visually */
-  opacity: 0; /* Make it invisible */
-  pointer-events: none; /* Ensure it's not directly clickable */
+  appearance: none; 
+  -webkit-appearance: none; 
+  position: absolute; 
+  opacity: 0;
+  pointer-events: none; 
 }
 
 
 .options label {
   display: inline-block;
   padding: 10px 20px;
-  background-color: white; /* Default background color */
+  background-color: white; 
   border-radius: 5px;
-  cursor: pointer; /* Make it look clickable */
+  cursor: pointer; 
   margin-right: 10px;
 }
 
 
 .options input[type="radio"]:checked + label {
-  background-color: none; /* Change background color when selected */
-  color: none; /* Optional: Change text color */
+  background-color: none; 
+  color: none; 
 }
-
-
-
-
-
 
 .container {
     width: 100%;
     max-width: 600px;
 }
-
-
-
 
 textarea {
     width: 100%;
@@ -551,10 +522,10 @@ form{
   background-color: transparent;
   border: none;
   cursor: pointer;
-  position: absolute; /* Absolute positioning */
-  right: -60px; /* Adjust button position to the right of the input */
+  position: absolute; 
+  right: -60px; 
   top: 50%;
-  transform: translateY(-50%); /* Vertically center the button */
+  transform: translateY(-50%); 
   color: #005bea;
   padding-left: 80px;
   font-size: 30px;
@@ -562,10 +533,8 @@ form{
 
 
 .history-btn:hover {
-  color: #005bea; /* Change color on hover */
+  color: #005bea; 
 }
-
-
 
 
 input[type="number"] {
@@ -607,8 +576,6 @@ label {
 }
 
 
-
-/*inaddq*/
 .value-container-affine-a {
   gap: 20px;
   flex-direction: row;
@@ -730,12 +697,6 @@ input[type="text"] {
   }
 
 
-
-/* Buttons */
-
-
-
-
 .back-btn {
     display: inline-block;
     margin-top: 20px;
@@ -748,12 +709,6 @@ input[type="text"] {
 }
 
 
-
-
-
-
-
-
 .back-btn:hover {
     background-color: #cc3b3b;
 }
@@ -764,9 +719,6 @@ input[type="text"] {
   max-width: 450px;
   padding: 30px;
   background-color: white;
-
-
-
 
 }
 .cipher-container {
@@ -811,7 +763,7 @@ textarea:focus {
     border: none;
     border-radius: 100px;
     cursor: pointer;
-    margin-top: 10px; /* Ensures the button is placed below the textarea */
+    margin-top: 10px; 
 }
 
 
@@ -820,10 +772,10 @@ textarea:focus {
 }
 .parent-container {
   display: flex;
-  flex-direction: column; /* Ensure the content stays in a vertical layout */
+  flex-direction: column; 
   align-items: flex-start;
-  margin-left: calc(var(--navbar-width) + 20px); /* Adjust based on the expanded navbar width */
-  transition: margin-left 0.3s ease; /* Smooth transition */
+  margin-left: calc(var(--navbar-width) + 20px); 
+  transition: margin-left 0.3s ease; 
 }
 
 
@@ -835,8 +787,6 @@ textarea:focus {
   margin-top: 70px;
   justify-content: center;
   margin-top: 50px;
-
-
 }
 
 
@@ -858,19 +808,17 @@ textarea:focus {
 }
 
 
-/*for profiledropdown*/
-/*profile dropdown*/
 
 .profile-container {
   position: relative;
   display: inline-block;
 }
 
-/* Profile dropdown style */
+
 .profile-dropdown {
-  display: none; /* Hide by default */
+  display: none; 
   position: absolute;
-  top: calc(100% + 5px); /* Below the profile icon with a small gap */
+  top: calc(100% + 5px); 
   left: -15px;
   background-color: #fff;
   border: 1px solid #ddd;
@@ -881,7 +829,7 @@ textarea:focus {
   border-radius: 7px;
 }
 
-/* Account Details Wrapper */
+
 .profile-dropdown .account-details-wrapper {
   padding: 12px 16px;
   background-color: #fff;
@@ -890,7 +838,7 @@ textarea:focus {
   align-items: center;
 }
 
-/* Account Details text */
+
 .profile-dropdown .account-details {
   font-weight: bold;
   color: #333;
@@ -942,8 +890,6 @@ textarea:focus {
 }
 
 
-
-/* Username section icon */
 .profile-dropdown .user-email i,
 .profile-dropdown .user-username i,
 .profile-dropdown .user-name i,
@@ -968,7 +914,7 @@ textarea:focus {
   padding: 4px 0 4px 5px;
 }
 
-/* Change Name Section */
+
 .profile-dropdown .change-name {
   display: flex;
   align-items: center;
@@ -977,19 +923,18 @@ textarea:focus {
   padding: 4px 0 4px 3px;
 }
 
-/* Change Name icon style */
+
 .profile-dropdown .change-name i {
   margin-right: 10px;
   font-size: 24px;
 }
 
 
-/* Change Name text */
 .profile-dropdown .change-name span {
   font-size: 14px;
 }
 
-/* Style for other items in the dropdown */
+
 .profile-dropdown a {
   display: block;
   padding: 12px 7px;
@@ -999,23 +944,21 @@ textarea:focus {
   border-bottom: 1px solid #ddd;
 }
 
-/* Last item in the dropdown without the divider */
+
 .profile-dropdown a:last-child {
   border-bottom: none;
 }
 
-/* Hover effect for other items */
+
 .profile-dropdown a:hover {
   background-color: #f1f1f1;
 }
 
-/* Show the dropdown when the profile icon is clicked */
 .profile-dropdown.show {
   display: block;
   padding: 8px;
 }
 
-/* Profile Icon and Text Style */
 .profile-text {
   font-size: 24px;
   cursor: pointer;
@@ -1045,7 +988,6 @@ textarea:focus {
 }
 
 
-/* Dark Mode Styles */
 .user-dark-mode i {
   font-size: 24px;
 }
@@ -1054,7 +996,6 @@ textarea:focus {
   border-bottom: 1px solid #ddd;
   
 }
-
 
 
 body.dark-mode {
@@ -1114,13 +1055,11 @@ body.dark-mode .user-name #user-name-details {
 }
 
 
-
-/* Email Section - Adjustments */
 .email-label,
 .username-label,
 .name-label {
   
-  margin-bottom: 2px;  /* Space between label and email details */
+  margin-bottom: 2px;
 }
 
 .email-label {
@@ -1149,57 +1088,53 @@ body.dark-mode .user-name #user-name-details {
 }
 
 
-
-/* Adjustments for user icon (FontAwesome icon) */
 .user-username i {
-  font-size: 16px;  /* Size of the icon */
-  color: #333;  /* Color of the icon */
+  font-size: 16px;  
+  color: #333;  
   padding-left: 15px;
 }
 
-/* Optional: Styling for username container for better alignment */
+
 .user-username {
-  display: flex; /* Align icon and text side by side */
-  align-items: center; /* Center vertically */
+  display: flex; 
+  align-items: center; 
 }
 
-
-
 .user-name i {
-  font-size: 16px;  /* Size of the icon */
-  color: #333;  /* Color of the icon */
+  font-size: 16px;  
+  color: #333;  
   padding-left: 15px;
 }
 
 
 .user-name {
-  display: flex; /* Align icon and text side by side */
-  align-items: center; /* Center vertically */
+  display: flex; 
+  align-items: center; 
 }
 
-/* Modal background */
+
 .modal {
-  display: none; /* Hidden by default */
-  position: fixed; /* Stay in place */
-  z-index: 1; /* Sit on top */
+  display: none; 
+  position: fixed;
+  z-index: 1; 
   left: 0;
   top: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(0, 0, 0, 0.4); /* Semi-transparent background */
+  background-color: rgba(0, 0, 0, 0.4); 
   padding-top: 60px;
   box-sizing: border-box;
 }
 
-/* Modal content */
+
 .modal-content {
   background-color: #fff;
-  margin: 5% auto; /* Center the modal */
+  margin: 5% auto; 
   padding: 20px;
   border: 1px solid #888;
   width: 80%;
-  max-width: 500px; /* Optional: maximum width */
-  border-radius: 10px; /* Optional: rounded corners */
+  max-width: 500px;
+  border-radius: 10px; 
 }
 
 
@@ -1207,7 +1142,7 @@ body.dark-mode .user-name #user-name-details {
   display: none;
 }
 
-/* Form styles */
+
 #changePasswordForm,
 #changeUsernameForm,
 #changeNameForm {
@@ -1218,10 +1153,10 @@ body.dark-mode .user-name #user-name-details {
 #changePasswordForm label,
 #changeUsernameForm label,
 #changeNameForm label {
-  color: #333;  /* Dark color for better visibility */
-  font-size: 16px;  /* Adjust font size */
+  color: #333;
+  font-size: 16px;  
   margin-bottom: 2px;
-  font-weight: bold; /* Make the text bold */
+  font-weight: bold;
 }
 
 #changePasswordForm input,
@@ -1246,12 +1181,10 @@ body.dark-mode .user-name #user-name-details {
 }
 
 
-
-/* Styles for Cancel and Confirm buttons */
 .modal-buttons {
   display: flex;
   gap: 10px;
-  justify-content: flex-end; /* Align buttons to the right */
+  justify-content: flex-end; 
 }
 
 .confirm-btn {
@@ -1272,7 +1205,7 @@ body.dark-mode .user-name #user-name-details {
   background-color: #cc3b3b;
 }
 
-/* Flash message styles */
+
 .flash-messages ul {
   list-style-type: none;
   padding-left: 0;
@@ -1299,7 +1232,6 @@ body.dark-mode .user-name #user-name-details {
   color: #856404;
 }
 
-/*flash msg name*/
 
 .flash-messages-name ul {
   list-style-type: none;
@@ -1327,9 +1259,6 @@ body.dark-mode .user-name #user-name-details {
   color: #856404;
 }
 
-
-/*flash msg pw*/
-
 .flash-messages-pw ul {
   list-style-type: none;
   padding-left: 0;
@@ -1355,4 +1284,3 @@ body.dark-mode .user-name #user-name-details {
   background-color: #fff3cd;
   color: #856404;
 }
-
