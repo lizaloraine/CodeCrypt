@@ -19,36 +19,34 @@ function toggleInput() {
     const decryptRadio = document.getElementById('decode');
     const inputTextArea = document.getElementById('input_text');
     const labels = document.querySelectorAll('.nav-item');
-    
-    // Enable or disable the input based on radio button selection
+   
     if (encryptRadio.checked || decryptRadio.checked) {
         inputTextArea.removeAttribute('disabled');
     } else {
         inputTextArea.setAttribute('disabled', 'disabled');
     }
 
-    // Remove 'active' class from all labels
+
     labels.forEach(label => {
         label.classList.remove('active');
     });
 
-    // Get the selected radio button
+   
     const selectedRadio = document.querySelector('input[name="mode"]:checked');
 
-    // Get the corresponding label using the 'for' attribute
+    
     const selectedLabel = document.querySelector(`label[for="${selectedRadio.id}"]`);
     
-    // Add the 'active' class to the selected label
     selectedLabel.classList.add('active');
 }
 
 document.addEventListener('DOMContentLoaded', () => {
     const navButtons = document.querySelectorAll('.nav-button');
    
-    // Function to highlight active page
+
     function highlightActivePage() {
         navButtons.forEach(button => {
-            // Check if the current button matches the current URL
+            
             if (button.href === window.location.href) {
                 button.classList.add('active');
             } else {
@@ -58,11 +56,11 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
 
-    // Initialize active page highlighting
+    
     highlightActivePage();
 
 
-    // Add hover effect for all buttons
+  
     navButtons.forEach(button => {
         button.addEventListener('mouseenter', () => {
             button.style.color = 'blue';
@@ -75,7 +73,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         button.addEventListener('mouseleave', () => {
             if (!button.classList.contains('active')) {
-                button.style.color = ''; // Reset to original color if not active
+                button.style.color = ''; 
                 const icon = button.querySelector('i');
                 if (icon) {
                     icon.style.color = '';
@@ -84,11 +82,11 @@ document.addEventListener('DOMContentLoaded', () => {
         });
 
 
-        // Ensure active button keeps the blue color
+        
         button.addEventListener('click', () => {
-            navButtons.forEach(b => b.classList.remove('active')); // Remove active class from all
-            button.classList.add('active'); // Add active class to clicked button
-            highlightActivePage(); // Update highlighted state
+            navButtons.forEach(b => b.classList.remove('active'));
+            button.classList.add('active'); 
+            highlightActivePage(); 
         });
     });
 });
@@ -101,16 +99,16 @@ document.addEventListener('DOMContentLoaded', () => {
     
 </head>
 <body>
-    <!-- Header Section -->
+   
     <header>
         <div class="header-right">
             <a href="/logout" class="logout-btn">Logout</a>
             <a href="#" class="profile-text" id="profile-icon">
-                <i class="fas fa-user-circle"></i> <!-- Profile Icon -->
+                <i class="fas fa-user-circle"></i>
             </a>
-            <!-- Profile Dropdown Menu -->
+            
             <div class="profile-dropdown" id="profile-dropdown">
-                <!-- Account Details Text (non-clickable) -->
+            
                 <span class="account-details">Account Details</span>
                 
                 <div class="user-email">
@@ -123,7 +121,6 @@ document.addEventListener('DOMContentLoaded', () => {
                 </div>
     
                
-                <!-- Change Username Link -->
                 <div class="user-username">
                     <i class="fas fa-user"></i>
                     <div class="username-details">
@@ -135,7 +132,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 </div>
                 
 
-                <!-- Modal Structure for Change Username -->
+                
                 <div id="changeUsernameModal" class="modal">
                     <div class="modal-content">
                         <h2>Change Username</h2>
@@ -146,7 +143,7 @@ document.addEventListener('DOMContentLoaded', () => {
                         <label for="newUserame">Enter New Username:</label>
                         <input type="text" id="newUsername" name="newUsername" required><br>
 
-                        <!-- Flash Messages Container -->
+                     
                         <div class="flash-messages">
                             {% with messages = get_flashed_messages(with_categories=true) %}
                             {% if messages %}
@@ -168,7 +165,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 </div>
 
 
-                <!-- Change Name Link -->
+               
                 <div class="user-name">
                     <i class="fas fa-pencil-alt"></i>
                     <div class="name-details">
@@ -179,7 +176,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     </div>
                 </div>
 
-                 <!-- Modal Structure for Change Name -->
+                 
                  <div id="changeNameModal" class="modal">
                     <div class="modal-content">
                         <h2>Change Name</h2>
@@ -191,7 +188,7 @@ document.addEventListener('DOMContentLoaded', () => {
                         <label for="newName">Enter new name:</label>
                         <input type="text" id="newName" name="newName" required><br>
 
-                       <!-- Flash Messages Container -->
+                     
                        <div class="flash-messages-name">
                         {% with messages = get_flashed_messages(with_categories=true) %}
                         {% if messages %}
@@ -213,14 +210,14 @@ document.addEventListener('DOMContentLoaded', () => {
                 </div>
 
                
-               <!-- Change Password Link -->
+            
                 <div class="user-password">
                 <a href="#" id="change-password-link" class="change-password">
                     <i class="fas fa-lock"></i> Change Password
                 </a>
                 </div>
 
-                <!-- Modal Structure for Change Password -->
+                
                 <div id="changePasswordModal" class="modal">
                     <div class="modal-content">
                         <h2>Change Password</h2>
@@ -234,7 +231,7 @@ document.addEventListener('DOMContentLoaded', () => {
                         <label for="confirmPassword">Confirm new password:</label>
                         <input type="password" id="confirmPassword" name="confirmPassword" required><br>
 
-                        <!-- Flash Messages Container -->
+                       
                         <div class="flash-messages-pw">
                             {% with messages = get_flashed_messages(with_categories=true) %}
                             {% if messages %}
@@ -275,7 +272,7 @@ document.addEventListener('DOMContentLoaded', () => {
     </header>
 
 
-    <!-- Second Navbar (Replaced with the items from the first code) -->
+   
     <div id="nav-bar">
         <input id="nav-toggle" type="checkbox"/>
         <div id="nav-header">
@@ -312,7 +309,7 @@ document.addEventListener('DOMContentLoaded', () => {
         </div>
 
 
-        <!-- Main Content -->
+       
     <div class="converter">
         <nav class="navbar">
             <div class="options">
