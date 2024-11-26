@@ -106,19 +106,18 @@ html, body {
   transition: opacity 1s;
 }
 #nav-logo img {
-    width: 30px; /* Adjust size of the logo */
+    width: 30px; 
     height: auto;
     margin-right: 10px;
-    margin-left: 10px; /* Maintain aspect ratio */
+    margin-left: 10px;
     transition: opacity 0.1s ease;
 }
 #nav-logo {
-    display: flex; /* Added: Flexbox for horizontal alignment of logo and heading */
+    display: flex;
     align-items: center;
 }
 
 
-/* New rule for fading the logo when the toggle is clicked */
 #nav-toggle:checked ~ #nav-header #nav-logo {
   opacity: 0;
   transition: opacity 0.1s ease;
@@ -304,52 +303,41 @@ label[for=nav-toggle] {
     top: 610px;
   }
 
-
-
-
-
-
 #nav-bar .fas {
   min-width: 3rem;
   text-align: center;
 }
 
 
-/* Hover effect for navbar items (text and icon) */
 .nav-button:hover {
-  color: var( --navbar-dark-primary); /* Change text color to blue on hover */
+  color: var( --navbar-dark-primary);
 }
 
 
 .nav-button:hover i {
-  color: var( --navbar-dark-primary); /* Change icon color to blue on hover */
+  color: var( --navbar-dark-primary); 
 }
 
 
 .nav-button:hover span {
-  color: var( --navbar-dark-primary); /* Change text color to blue on hover */
+  color: var( --navbar-dark-primary); 
 }
 
-
-/* Active navbar button style */
 .nav-button.active {
-  color: var( --navbar-dark-primary); /* Set text color to blue for active button */
+  color: var( --navbar-dark-primary); 
   background-color: white;
-  border-radius: 16px 0 0 16px ; /* Set background to white for visibility */
+  border-radius: 16px 0 0 16px ; 
 }
 
 
 .nav-button.active i {
-  color: var( --navbar-dark-primary); /* Set icon color to blue for active button */
+  color: var( --navbar-dark-primary); 
 }
 
 
 .nav-button.active span {
-  color: var( --navbar-dark-primary); /* Set text color to blue for active button */
+  color: var( --navbar-dark-primary);
 }
-
-
-
 
 header {
     display: flex;
@@ -371,9 +359,6 @@ header {
  
 }
 
-
-
-
 .logout-btn, .profile-text {
     padding: 10px 15px;
     color: white;
@@ -381,24 +366,15 @@ header {
     border-radius: 5px;
 }
 
-
-
-
 .logout-btn {
     background-color: #005bea;
     border-radius: 100px;
     padding: 10px 50px;
 }
 
-
-
-
 .logout-btn:hover {
     background-color: #cc3b3b;
 }
-
-
-
 
 .profile-text {
     color:  #005bea;
@@ -409,9 +385,6 @@ header {
 }
 
 
-
-
-/* General Reset */
 * {
     padding: 0;
     margin: 0;
@@ -422,15 +395,12 @@ header {
   body {
     display: flex;
     justify-content: center;
-    align-items: flex-start; /* Align content at the top */
+    align-items: flex-start; 
     flex-wrap: wrap;
     user-select: none;
     padding-top: 20px;
   }
-  
-  /* Main Content Container */
- 
-  /* Title Container */
+
   
 .title-container {
     text-align: center;
@@ -455,32 +425,26 @@ header {
     padding-left: 30px;
   }
 
-
-  /* Apply smooth transitions to layout changes */
 .card-container, .title-container {
     transition: margin-left 0.3s ease, margin-top 0.3s ease;
   }
   
-  /* Parent Container */
   .parent-container {
     display: flex;
-    flex-direction: column; /* Ensure the content stays in a vertical layout */
+    flex-direction: column;
     align-items: flex-start;
-    margin-left: calc(var(--navbar-width) + 52px); /* Adjust based on the expanded navbar width */
+    margin-left: calc(var(--navbar-width) + 52px);
     
-    width: 100%; /* Ensure full width */
-    flex-grow: 1; /* Allow it to take up remaining space */
+    width: 100%; 
+    flex-grow: 1; 
   }
 
- 
-  
-  /* Filter Box Styling */
   .filter-boxes {
     display: flex;
     justify-content: space-between;
-    gap: 20px; /* Space between the filter inputs */
+    gap: 20px; 
     margin-bottom: 20px;
-    width: 100%; /* Ensure full width */
+    width: 100%;
   }
   
   .filter-boxes label {
@@ -496,23 +460,22 @@ header {
     flex-shrink: 0;
   }
   
-  /* History Entry Styling */
+ 
   .history-entry {
     display: flex;
     justify-content: space-between;
-    width: 80%; /* Set width to 100% for full-width entries */
-    margin-bottom: 20px; /* Space between entries */
+    width: 80%;
+    margin-bottom: 20px;
     border: 1px solid #ddd;
     padding: 15px;
     background-color: #f4f4f4;
-    border-radius: 8px; /* Rounded corners */
+    border-radius: 8px;
     
   }
   
-  /* Input & Output Boxes */
   .input-container,
   .output-container {
-    width: 45%; /* 45% width for each container */
+    width: 45%;
     padding: 15px;
     background-color: #fff;
     border-radius: 8px;
@@ -546,28 +509,25 @@ header {
     margin-bottom: 10px;
   }
   
-  /* Divider between sections */
+ 
   hr {
     width: 100%;
     margin: 20px 0;
     border: 0;
     border-top: 1px solid #ddd;
   }
-  
 
-
- /*profile dropdown*/
 
 .profile-container {
   position: relative;
   display: inline-block;
 }
 
-/* Profile dropdown style */
+
 .profile-dropdown {
-  display: none; /* Hide by default */
+  display: none; 
   position: absolute;
-  top: calc(100% + 5px); /* Below the profile icon with a small gap */
+  top: calc(100% + 5px); 
   left: -15px;
   background-color: #fff;
   border: 1px solid #ddd;
@@ -578,7 +538,7 @@ header {
   border-radius: 7px;
 }
 
-/* Account Details Wrapper */
+
 .profile-dropdown .account-details-wrapper {
   padding: 12px 16px;
   background-color: #fff;
@@ -587,7 +547,7 @@ header {
   align-items: center;
 }
 
-/* Account Details text */
+
 .profile-dropdown .account-details {
   font-weight: bold;
   color: #333;
@@ -639,8 +599,6 @@ header {
 }
 
 
-
-/* Username section icon */
 .profile-dropdown .user-email i,
 .profile-dropdown .user-username i,
 .profile-dropdown .user-name i,
@@ -665,7 +623,6 @@ header {
   padding: 4px 0 4px 5px;
 }
 
-/* Change Name Section */
 .profile-dropdown .change-name {
   display: flex;
   align-items: center;
@@ -674,19 +631,16 @@ header {
   padding: 4px 0 4px 3px;
 }
 
-/* Change Name icon style */
+
 .profile-dropdown .change-name i {
   margin-right: 10px;
   font-size: 24px;
 }
 
-
-/* Change Name text */
 .profile-dropdown .change-name span {
   font-size: 14px;
 }
 
-/* Style for other items in the dropdown */
 .profile-dropdown a {
   display: block;
   padding: 12px 7px;
@@ -696,23 +650,20 @@ header {
   border-bottom: 1px solid #ddd;
 }
 
-/* Last item in the dropdown without the divider */
 .profile-dropdown a:last-child {
   border-bottom: none;
 }
 
-/* Hover effect for other items */
 .profile-dropdown a:hover {
   background-color: #f1f1f1;
 }
 
-/* Show the dropdown when the profile icon is clicked */
 .profile-dropdown.show {
   display: block;
   padding: 8px;
 }
 
-/* Profile Icon and Text Style */
+
 .profile-text {
   font-size: 24px;
   cursor: pointer;
@@ -742,7 +693,6 @@ header {
 }
 
 
-/* Dark Mode Styles */
 .user-dark-mode i {
   font-size: 24px;
 }
@@ -751,8 +701,6 @@ header {
   border-bottom: 1px solid #ddd;
   
 }
-
-
 
 body.dark-mode {
   background-color: #121212;
@@ -810,37 +758,36 @@ body.dark-mode .user-name #user-name-details {
   color: #bababa;
 }
 
-/* Default styles for the h2 and a */
+
 h2 {
   font-weight: bold;
   font-size: 30px;
   text-align: center;
   padding-left: 20px;
   white-space: nowrap;
-  color: black; /* Default color for h2 */
+  color: black;
 }
 
 h2 a {
-  color: #005bea; /* Default color for the link */
-  text-decoration: none; /* Remove underline if needed */
+  color: #005bea; 
+  text-decoration: none; 
 }
 
-/* Dark mode styles */
+
 body.dark-mode h2 {
-  color: white; /* Change h2 color in dark mode */
+  color: white;
 }
 
 body.dark-mode h2 a {
-  color: #005bea; /* Keep the same color for the link in dark mode */
+  color: #005bea; 
 }
 
 
-/* Email Section - Adjustments */
 .email-label,
 .username-label,
 .name-label {
   
-  margin-bottom: 2px;  /* Space between label and email details */
+  margin-bottom: 2px;  
 }
 
 .email-label {
@@ -869,57 +816,53 @@ body.dark-mode h2 a {
 }
 
 
-
-/* Adjustments for user icon (FontAwesome icon) */
 .user-username i {
-  font-size: 16px;  /* Size of the icon */
-  color: #333;  /* Color of the icon */
+  font-size: 16px;  
+  color: #333;  
   padding-left: 15px;
 }
 
-/* Optional: Styling for username container for better alignment */
+
 .user-username {
-  display: flex; /* Align icon and text side by side */
-  align-items: center; /* Center vertically */
+  display: flex; 
+  align-items: center; 
 }
 
-
-
 .user-name i {
-  font-size: 16px;  /* Size of the icon */
-  color: #333;  /* Color of the icon */
+  font-size: 16px; 
+  color: #333; 
   padding-left: 15px;
 }
 
 
 .user-name {
-  display: flex; /* Align icon and text side by side */
-  align-items: center; /* Center vertically */
+  display: flex; 
+  align-items: center; 
 }
 
-/* Modal background */
+
 .modal {
-  display: none; /* Hidden by default */
-  position: fixed; /* Stay in place */
-  z-index: 1; /* Sit on top */
+  display: none; 
+  position: fixed;
+  z-index: 1;
   left: 0;
   top: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(0, 0, 0, 0.4); /* Semi-transparent background */
+  background-color: rgba(0, 0, 0, 0.4);
   padding-top: 60px;
   box-sizing: border-box;
 }
 
-/* Modal content */
+
 .modal-content {
   background-color: #fff;
-  margin: 5% auto; /* Center the modal */
+  margin: 5% auto; 
   padding: 20px;
   border: 1px solid #888;
   width: 80%;
-  max-width: 500px; /* Optional: maximum width */
-  border-radius: 10px; /* Optional: rounded corners */
+  max-width: 500px;
+  border-radius: 10px; 
 }
 
 
@@ -927,7 +870,6 @@ body.dark-mode h2 a {
   display: none;
 }
 
-/* Form styles */
 #changePasswordForm,
 #changeUsernameForm,
 #changeNameForm {
@@ -938,10 +880,10 @@ body.dark-mode h2 a {
 #changePasswordForm label,
 #changeUsernameForm label,
 #changeNameForm label {
-  color: #333;  /* Dark color for better visibility */
-  font-size: 16px;  /* Adjust font size */
+  color: #333;  
+  font-size: 16px;  
   margin-bottom: 2px;
-  font-weight: bold; /* Make the text bold */
+  font-weight: bold;
 }
 
 #changePasswordForm input,
@@ -965,13 +907,10 @@ body.dark-mode h2 a {
   cursor: pointer;
 }
 
-
-
-/* Styles for Cancel and Confirm buttons */
 .modal-buttons {
   display: flex;
   gap: 10px;
-  justify-content: flex-end; /* Align buttons to the right */
+  justify-content: flex-end; 
 }
 
 .confirm-btn {
@@ -992,7 +931,7 @@ body.dark-mode h2 a {
   background-color: #cc3b3b;
 }
 
-/* Flash message styles */
+
 .flash-messages ul {
   list-style-type: none;
   padding-left: 0;
@@ -1019,7 +958,6 @@ body.dark-mode h2 a {
   color: #856404;
 }
 
-/*flash msg name*/
 
 .flash-messages-name ul {
   list-style-type: none;
@@ -1047,9 +985,6 @@ body.dark-mode h2 a {
   color: #856404;
 }
 
-
-/*flash msg pw*/
-
 .flash-messages-pw ul {
   list-style-type: none;
   padding-left: 0;
@@ -1075,4 +1010,3 @@ body.dark-mode h2 a {
   background-color: #fff3cd;
   color: #856404;
 }
-
