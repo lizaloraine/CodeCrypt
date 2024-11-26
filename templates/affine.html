@@ -332,7 +332,26 @@
     </form>
  </div>
 </div>
+<script>
+const navToggle = document.getElementById("nav-toggle"); 
+const parentContainer = document.querySelector(".parent-container"); 
+const navbarWidthExpanded = 300; 
+const navbarWidthCollapsed = 100;
+const navbarRightExpanded = 40;
+const navbarrightCollapsed = 0;
    
+navToggle.addEventListener('change', function() {
+  if (navToggle.checked) {
+    parentContainer.style.marginRight = `${navbarrightCollapsed}px`;
+    parentContainer.style.marginLeft = `${navbarWidthCollapsed}px`;
+    parentContainer.style.transition = "margin-left 0.3s ease";
+  } else {
+    parentContainer.style.marginRight = `${navbarRightExpanded}px`;
+    parentContainer.style.marginLeft = `${navbarWidthExpanded}px`; 
+    parentContainer.style.transition = "margin-left 0.3s ease"; 
+  }
+});
+</script>   
 </body>
 </html>
 
