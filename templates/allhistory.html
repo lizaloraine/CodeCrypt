@@ -289,6 +289,26 @@
                 
             {% endif %}
 </div>
-
+<script>
+const navToggle = document.getElementById("nav-toggle"); 
+const parentContainer = document.querySelector(".parent-container"); 
+const navbarWidthExpanded = 478;
+const navbarWidthCollapsed = 328; 
+const navbarRightExpanded = 40;
+const navbarrightCollapsed = 0;
+    
+navToggle.addEventListener('change', function() {
+  if (navToggle.checked) {
+    parentContainer.style.marginRight = `${navbarrightCollapsed}px`;
+    parentContainer.style.marginLeft = `${navbarWidthCollapsed}px`; 
+    parentContainer.style.transition = "margin-left 0.3s ease";
+  } else {
+    // Navbar is collapsed
+    parentContainer.style.marginRight = `${navbarRightExpanded}px`;
+    parentContainer.style.marginLeft = `${navbarWidthExpanded}px`; 
+    parentContainer.style.transition = "margin-left 0.3s ease";
+  }
+});
+</script>
 </body>
 </html>
