@@ -67,7 +67,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         button.addEventListener('mouseleave', () => {
             if (!button.classList.contains('active')) {
-                button.style.color = ''; // Reset to original color if not active
+                button.style.color = '';
                 const icon = button.querySelector('i');
                 if (icon) {
                     icon.style.color = '';
@@ -91,16 +91,16 @@ document.addEventListener('DOMContentLoaded', () => {
     
 </head>
 <body>
-    <!-- Header Section -->
+    
     <header>
         <div class="header-right">
             <a href="/logout" class="logout-btn">Logout</a>
             <a href="#" class="profile-text" id="profile-icon">
-                <i class="fas fa-user-circle"></i> <!-- Profile Icon -->
+                <i class="fas fa-user-circle"></i> 
             </a>
-            <!-- Profile Dropdown Menu -->
+            
             <div class="profile-dropdown" id="profile-dropdown">
-                <!-- Account Details Text (non-clickable) -->
+               
                 <span class="account-details">Account Details</span>
                 
                 <div class="user-email">
@@ -113,7 +113,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 </div>
     
                
-                <!-- Change Username Link -->
+            
                 <div class="user-username">
                     <i class="fas fa-user"></i>
                     <div class="username-details">
@@ -125,7 +125,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 </div>
                 
 
-                <!-- Modal Structure for Change Username -->
+               
                 <div id="changeUsernameModal" class="modal">
                     <div class="modal-content">
                         <h2>Change Username</h2>
@@ -136,7 +136,7 @@ document.addEventListener('DOMContentLoaded', () => {
                         <label for="newUserame">Enter New Username:</label>
                         <input type="text" id="newUsername" name="newUsername" required><br>
 
-                        <!-- Flash Messages Container -->
+                       
                         <div class="flash-messages">
                             {% with messages = get_flashed_messages(with_categories=true) %}
                             {% if messages %}
@@ -158,7 +158,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 </div>
 
 
-                <!-- Change Name Link -->
+             
                 <div class="user-name">
                     <i class="fas fa-pencil-alt"></i>
                     <div class="name-details">
@@ -169,7 +169,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     </div>
                 </div>
 
-                 <!-- Modal Structure for Change Name -->
+                 
                  <div id="changeNameModal" class="modal">
                     <div class="modal-content">
                         <h2>Change Name</h2>
@@ -181,7 +181,7 @@ document.addEventListener('DOMContentLoaded', () => {
                         <label for="newName">Enter new name:</label>
                         <input type="text" id="newName" name="newName" required><br>
 
-                       <!-- Flash Messages Container -->
+                       
                        <div class="flash-messages-name">
                         {% with messages = get_flashed_messages(with_categories=true) %}
                         {% if messages %}
@@ -203,14 +203,14 @@ document.addEventListener('DOMContentLoaded', () => {
                 </div>
 
                
-               <!-- Change Password Link -->
+               
                 <div class="user-password">
                 <a href="#" id="change-password-link" class="change-password">
                     <i class="fas fa-lock"></i> Change Password
                 </a>
                 </div>
 
-                <!-- Modal Structure for Change Password -->
+                
                 <div id="changePasswordModal" class="modal">
                     <div class="modal-content">
                         <h2>Change Password</h2>
@@ -224,7 +224,7 @@ document.addEventListener('DOMContentLoaded', () => {
                         <label for="confirmPassword">Confirm new password:</label>
                         <input type="password" id="confirmPassword" name="confirmPassword" required><br>
 
-                        <!-- Flash Messages Container -->
+                        
                         <div class="flash-messages-pw">
                             {% with messages = get_flashed_messages(with_categories=true) %}
                             {% if messages %}
@@ -298,7 +298,7 @@ document.addEventListener('DOMContentLoaded', () => {
             <h1>Vigenère Cipher</h1>
         </div>
 
-    <!-- Main Content -->       
+           
     <div class="converter">
         <nav class="navbar">
             <div class="options">
