@@ -71,11 +71,11 @@
         <div class="header-right">
             <a href="/logout" class="logout-btn">Logout</a>
             <a href="#" class="profile-text" id="profile-icon">
-                <i class="fas fa-user-circle"></i> <!-- Profile Icon -->
+                <i class="fas fa-user-circle"></i>
             </a>
-            <!-- Profile Dropdown Menu -->
+         
             <div class="profile-dropdown" id="profile-dropdown">
-                <!-- Account Details Text (non-clickable) -->
+               
                 <span class="account-details">Account Details</span>
                 
                 <div class="user-email">
@@ -88,7 +88,6 @@
                 </div>
     
                
-                <!-- Change Username Link -->
                 <div class="user-username">
                     <i class="fas fa-user"></i>
                     <div class="username-details">
@@ -100,7 +99,6 @@
                 </div>
                 
 
-                <!-- Modal Structure for Change Username -->
                 <div id="changeUsernameModal" class="modal">
                     <div class="modal-content">
                         <h2>Change Username</h2>
@@ -111,7 +109,7 @@
                         <label for="newUserame">Enter New Username:</label>
                         <input type="text" id="newUsername" name="newUsername" required><br>
 
-                        <!-- Flash Messages Container -->
+                        
                         <div class="flash-messages">
                             {% with messages = get_flashed_messages(with_categories=true) %}
                             {% if messages %}
@@ -132,8 +130,6 @@
                     </div>
                 </div>
 
-
-                <!-- Change Name Link -->
                 <div class="user-name">
                     <i class="fas fa-pencil-alt"></i>
                     <div class="name-details">
@@ -144,7 +140,7 @@
                     </div>
                 </div>
 
-                 <!-- Modal Structure for Change Name -->
+              
                  <div id="changeNameModal" class="modal">
                     <div class="modal-content">
                         <h2>Change Name</h2>
@@ -156,7 +152,6 @@
                         <label for="newName">Enter new name:</label>
                         <input type="text" id="newName" name="newName" required><br>
 
-                       <!-- Flash Messages Container -->
                        <div class="flash-messages-name">
                         {% with messages = get_flashed_messages(with_categories=true) %}
                         {% if messages %}
@@ -177,15 +172,14 @@
                     </div>
                 </div>
 
-               
-               <!-- Change Password Link -->
+              
                 <div class="user-password">
                 <a href="#" id="change-password-link" class="change-password">
                     <i class="fas fa-lock"></i> Change Password
                 </a>
                 </div>
 
-                <!-- Modal Structure for Change Password -->
+              
                 <div id="changePasswordModal" class="modal">
                     <div class="modal-content">
                         <h2>Change Password</h2>
@@ -199,7 +193,6 @@
                         <label for="confirmPassword">Confirm new password:</label>
                         <input type="password" id="confirmPassword" name="confirmPassword" required><br>
 
-                        <!-- Flash Messages Container -->
                         <div class="flash-messages-pw">
                             {% with messages = get_flashed_messages(with_categories=true) %}
                             {% if messages %}
@@ -311,7 +304,6 @@
 </div>  
 </body>
 </html>
-
 
 
 
