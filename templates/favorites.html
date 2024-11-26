@@ -228,34 +228,30 @@
             <h1>Favorites</h1>
         </div>
 
-        <div class="card-container">
+        <div class="card-container {% if not favorites %}card-container-empty{% endif %}">
             {% if favorites %}
                 {% for fav in favorites %}
                     <a href="/{{ fav[3] | lower | trim('/') }}" class="card">
                         <i class="{{ fav[2] }} icon"></i>
                         <div class="text">
-                            <h4>{{ fav[0] }}</h4>  
-                           
+                            <h4>{{ fav[0] }}</h4> 
                             <button onclick="FavButton(event, '{{ fav[0] }}', '{{ fav[1] }}', '{{ fav[2] }}')" 
                                     class="favbtn fav-active" style="color: red;">
                                 <i class="fas fa-heart"></i>
                             </button>
-                            <p>{{ fav[1] }}</p>  
+                            <p>{{ fav[1] }}</p> 
                         </div>
                     </a>
                 {% endfor %}
-                {% else %}
-                <h2 style="font-weight: bold; font-size: 30px; text-align: center; padding-left: 20px;white-space: nowrap;">
+            {% else %}
+                <h2>
                     You don't have any favorites yet. Add some from the <a href="{{ url_for('homepage') }}">homepage</a>!
                 </h2>
-                
             {% endif %}
-            
         </div>
     </div>
 
     <script>
-  
         function FavButton(event, toolName, description, iconText) {
             event.preventDefault();
             var favbtn = event.target.closest('button');
