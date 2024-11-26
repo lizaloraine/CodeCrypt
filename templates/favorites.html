@@ -287,6 +287,48 @@
             })
             .catch(error => console.error('Error:', error));
         }
+        
+const navToggle = document.getElementById("nav-toggle");
+const parentContainer = document.querySelector(".parent-container"); 
+const cardContainer = document.querySelector(".card-container"); 
+
+
+const navbarWidthExpandedEmpty = 478; 
+const navbarWidthCollapsedEmpty = 389; 
+const navbarRightExpanded = 40; 
+const navbarRightCollapsed = 0; 
+const navbarWidthExpanded = 313; 
+const navbarWidthCollapsed = 131; 
+
+
+navToggle.addEventListener('change', function() {
+    updateCardContainerStyles(); 
+});
+
+
+function updateCardContainerStyles() {
+    const isCollapsed = navToggle.checked; 
+    if (cardContainer && cardContainer.classList.contains("card-container-empty")) {
+
+        if (isCollapsed) {
+            parentContainer.style.marginLeft = `${navbarWidthCollapsedEmpty}px`; 
+        } else {
+            parentContainer.style.marginLeft = `${navbarWidthExpandedEmpty}px`; 
+        }
+        parentContainer.style.marginRight = `${navbarRightExpanded}px`; 
+        parentContainer.style.transition = "margin 0.3s ease"; 
+    } else {
+        if (isCollapsed) {
+            parentContainer.style.marginLeft = `${navbarWidthCollapsed}px`; 
+        } else {
+            parentContainer.style.marginLeft = `${navbarWidthExpanded}px`;
+        }
+        parentContainer.style.marginRight = `${navbarRightExpanded}px`; 
+        parentContainer.style.transition = "margin 0.3s ease"; 
+    }
+}
+
+updateCardContainerStyles();
     </script>
 </body>
 </html>
