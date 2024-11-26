@@ -15,7 +15,6 @@
        }
     </script>
     <script src="{{ url_for('static', filename='js/header.js') }}" defer></script>
-    <!-- Link to external CSS files -->
     <link rel="stylesheet" href="{{ url_for('static', filename='history.css') }}">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
     
@@ -25,11 +24,11 @@
         <div class="header-right">
             <a href="/logout" class="logout-btn">Logout</a>
             <a href="#" class="profile-text" id="profile-icon">
-                <i class="fas fa-user-circle"></i> <!-- Profile Icon -->
+                <i class="fas fa-user-circle"></i> 
             </a>
-            <!-- Profile Dropdown Menu -->
+         
             <div class="profile-dropdown" id="profile-dropdown">
-                <!-- Account Details Text (non-clickable) -->
+            
                 <span class="account-details">Account Details</span>
                 
                 <div class="user-email">
@@ -41,8 +40,6 @@
                     </div>
                 </div>
     
-               
-                <!-- Change Username Link -->
                 <div class="user-username">
                     <i class="fas fa-user"></i>
                     <div class="username-details">
@@ -53,8 +50,6 @@
                     </div>
                 </div>
                 
-
-                <!-- Modal Structure for Change Username -->
                 <div id="changeUsernameModal" class="modal">
                     <div class="modal-content">
                         <h2>Change Username</h2>
@@ -65,7 +60,7 @@
                         <label for="newUserame">Enter New Username:</label>
                         <input type="text" id="newUsername" name="newUsername" required><br>
 
-                        <!-- Flash Messages Container -->
+                       
                         <div class="flash-messages">
                             {% with messages = get_flashed_messages(with_categories=true) %}
                             {% if messages %}
@@ -86,8 +81,6 @@
                     </div>
                 </div>
 
-
-                <!-- Change Name Link -->
                 <div class="user-name">
                     <i class="fas fa-pencil-alt"></i>
                     <div class="name-details">
@@ -98,7 +91,6 @@
                     </div>
                 </div>
 
-                 <!-- Modal Structure for Change Name -->
                  <div id="changeNameModal" class="modal">
                     <div class="modal-content">
                         <h2>Change Name</h2>
@@ -110,7 +102,6 @@
                         <label for="newName">Enter new name:</label>
                         <input type="text" id="newName" name="newName" required><br>
 
-                       <!-- Flash Messages Container -->
                        <div class="flash-messages-name">
                         {% with messages = get_flashed_messages(with_categories=true) %}
                         {% if messages %}
@@ -131,15 +122,13 @@
                     </div>
                 </div>
 
-               
-               <!-- Change Password Link -->
+           
                 <div class="user-password">
                 <a href="#" id="change-password-link" class="change-password">
                     <i class="fas fa-lock"></i> Change Password
                 </a>
                 </div>
 
-                <!-- Modal Structure for Change Password -->
                 <div id="changePasswordModal" class="modal">
                     <div class="modal-content">
                         <h2>Change Password</h2>
@@ -153,7 +142,6 @@
                         <label for="confirmPassword">Confirm new password:</label>
                         <input type="password" id="confirmPassword" name="confirmPassword" required><br>
 
-                        <!-- Flash Messages Container -->
                         <div class="flash-messages-pw">
                             {% with messages = get_flashed_messages(with_categories=true) %}
                             {% if messages %}
@@ -194,7 +182,7 @@
     </header>
 
 
-    <!-- Second Navbar (Replaced with the items from the first code) -->
+  
     <div id="nav-bar">
         <input id="nav-toggle" type="checkbox"/>
         <div id="nav-header">
@@ -225,13 +213,11 @@
     </div>
 
 
- <!-- Main Content -->
 <div class="parent-container">
     <div class="title-container">
         <h1>History</h1>
     </div>
 
-    <!-- Filter Box -->
     <form method="GET" action="{{ url_for('all_history') }}">
         <div class="filter-boxes">
             <label for="cipher-type">Filter by Type:</label>
@@ -260,11 +246,11 @@
     <hr>
     {% if history %}
     {% for record in history %}
-        <!-- Date & Time and Conversion Type -->
+       
         <p><strong>Date & Time:</strong> {{ record.timestamp }}</p>
         <p><strong>Conversion Type:</strong> {{ record.conversion_type }} - {{ record.mode_type }}</p><br>
 
-        <!-- Input & Output Containers -->
+    
         <div class="history-entry">
             <div class="input-container">
                 <h3 class="input-word">Input</h3>
@@ -276,7 +262,7 @@
             </div>
         </div>
 
-        <!-- Additional Details -->
+      
         <div class="additional-details">
             {% if record.shift %}
                 <p><strong>Shift:</strong> {{ record.shift }}</p>
@@ -294,7 +280,7 @@
                 <p><strong>Rail:</strong> {{ record.rail }}</p>
             {% endif %}
         </div>
-        <hr> <!-- Divider between history entries -->
+        <hr> 
     {% endfor %}
     {% else %}
                 <h2 style="font-weight: bold; font-size: 30px; text-align: center; padding-left: 20px;white-space: nowrap;">
