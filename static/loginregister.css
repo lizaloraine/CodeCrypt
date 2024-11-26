@@ -219,10 +219,6 @@ label {
     border: 1px solid #f5c6cb;
 }
 
-
-
-
-
 @media (max-width: 768px) {
     .outer-box {
         flex-direction: column;
@@ -262,7 +258,7 @@ label {
 .inner-box-1,
 .inner-box-2 {
     position: relative;
-    z-index: 1; /* Ensure modal overlay is above */
+    z-index: 1;
 }
 
 .reset-password-box p {
@@ -295,10 +291,9 @@ label {
 }
 
 
-/*modal popup*/
 body.modal-active {
     
-    padding-right: calc(100vw - 100%); /* Compensate for scrollbar width */
+    padding-right: calc(100vw - 100%);
 }
 
 
@@ -306,27 +301,24 @@ body.modal-active {
     position: fixed;
     top: 0;
     left: 0;
-    width: 100vw; /* Full viewport width */
-    height: 100vh; /* Full viewport height */
+    width: 100vw;
+    height: 100vh; 
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
+    background-color: rgba(0, 0, 0, 0.5); 
     z-index: 1000;
 }
 
-
-/* Modal content styling */
 .modal-content {
     background-color: white;
     padding: 20px;
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    position: relative; /* For positioning the X button */
+    position: relative; 
     width: 400px;
 }
 
-/* Close button (X) styling */
 .close-button {
     position: absolute;
     top: 10px;
@@ -338,5 +330,5 @@ body.modal-active {
 }
 
 .close-button:hover {
-    color: red; /* Change color on hover */
+    color: red;
 }
