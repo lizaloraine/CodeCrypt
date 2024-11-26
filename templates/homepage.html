@@ -15,7 +15,6 @@
         }
     </script>
     <script src="{{ url_for('static', filename='js/header.js') }}" defer></script>
-     <!-- Link to external CSS files -->
      <link rel="stylesheet" href="{{ url_for('static', filename='homepage.css') }}">
      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
 
@@ -26,11 +25,11 @@
         <div class="header-right">
             <a href="/logout" class="logout-btn">Logout</a>
             <a href="#" class="profile-text" id="profile-icon">
-                <i class="fas fa-user-circle"></i> <!-- Profile Icon -->
+                <i class="fas fa-user-circle"></i> 
             </a>
-            <!-- Profile Dropdown Menu -->
+           
             <div class="profile-dropdown" id="profile-dropdown">
-                <!-- Account Details Text (non-clickable) -->
+              
                 <span class="account-details">Account Details</span>
                 
                 <div class="user-email">
@@ -43,7 +42,7 @@
                 </div>
     
                
-                <!-- Change Username Link -->
+                
                 <div class="user-username">
                     <i class="fas fa-user"></i>
                     <div class="username-details">
@@ -55,7 +54,7 @@
                 </div>
                 
 
-                <!-- Modal Structure for Change Username -->
+                
                 <div id="changeUsernameModal" class="modal">
                     <div class="modal-content">
                         <h2>Change Username</h2>
@@ -66,7 +65,7 @@
                         <label for="newUserame">Enter New Username:</label>
                         <input type="text" id="newUsername" name="newUsername" required><br>
 
-                        <!-- Flash Messages Container -->
+                       
                         <div class="flash-messages">
                             {% with messages = get_flashed_messages(with_categories=true) %}
                             {% if messages %}
@@ -88,7 +87,7 @@
                 </div>
 
 
-                <!-- Change Name Link -->
+                
                 <div class="user-name">
                     <i class="fas fa-pencil-alt"></i>
                     <div class="name-details">
@@ -99,7 +98,7 @@
                     </div>
                 </div>
 
-                 <!-- Modal Structure for Change Name -->
+                
                  <div id="changeNameModal" class="modal">
                     <div class="modal-content">
                         <h2>Change Name</h2>
@@ -111,7 +110,7 @@
                         <label for="newName">Enter new name:</label>
                         <input type="text" id="newName" name="newName" required><br>
 
-                       <!-- Flash Messages Container -->
+                       
                        <div class="flash-messages-name">
                         {% with messages = get_flashed_messages(with_categories=true) %}
                         {% if messages %}
@@ -133,14 +132,14 @@
                 </div>
 
                
-               <!-- Change Password Link -->
+               
                 <div class="user-password">
                 <a href="#" id="change-password-link" class="change-password">
                     <i class="fas fa-lock"></i> Change Password
                 </a>
                 </div>
 
-                <!-- Modal Structure for Change Password -->
+              
                 <div id="changePasswordModal" class="modal">
                     <div class="modal-content">
                         <h2>Change Password</h2>
@@ -154,7 +153,7 @@
                         <label for="confirmPassword">Confirm new password:</label>
                         <input type="password" id="confirmPassword" name="confirmPassword" required><br>
 
-                        <!-- Flash Messages Container -->
+                        
                         <div class="flash-messages-pw">
                             {% with messages = get_flashed_messages(with_categories=true) %}
                             {% if messages %}
@@ -195,7 +194,6 @@
     </header>
 
 
-    <!-- Second Navbar (Replaced with the items from the first code) -->
     <div id="nav-bar">
         <input id="nav-toggle" type="checkbox"/>
         <div id="nav-header">
@@ -353,11 +351,11 @@
     </div>
 </div>
 <script>
-    // Select the elements needed
-const navToggle = document.getElementById("nav-toggle"); // Your navbar toggle checkbox
-const parentContainer = document.querySelector(".parent-container"); // The container that holds the grid
-const navbarWidthExpanded = 300; // Width of navbar when expanded
-const navbarWidthCollapsed = 100; // Width of navbar when collapsed
+   
+const navToggle = document.getElementById("nav-toggle"); 
+const parentContainer = document.querySelector(".parent-container"); 
+const navbarWidthExpanded = 300; 
+const navbarWidthCollapsed = 100; 
 const navbarRightExpanded = 40;
 const navbarrightCollapsed = 0;
 
@@ -371,14 +369,14 @@ function FavButton1(event, toolName, description, iconText, href) {
     var favbtn = document.getElementById("favbtn1");
     favbtn.classList.toggle("fav-active");
 
-    // Optional: change the button color or style
+    
     if (favbtn.classList.contains("fav-active")) {
-        favbtn.style.color = "red"; // Example: Change color when active
+        favbtn.style.color = "red"; 
     } else {
-        favbtn.style.color = ""; // Reset color when inactive
+        favbtn.style.color = ""; 
     }
 
-    // Send the data to the Flask server using fetch
+    
     var isFavorited = favbtn.classList.contains("fav-active");
     fetch('/toggle-favorite', {
         method: 'POST',
@@ -395,27 +393,27 @@ function FavButton1(event, toolName, description, iconText, href) {
     })
     .then(response => response.json())
     .then(data => {
-        console.log(data.message); // Log the response message from the server
+        console.log(data.message); 
     })
     .catch(error => console.error('Error:', error));
 }
 
 function FavButton2(event, toolName, description, iconText, href) {
-    // Prevents the default behavior of the anchor tag
+    
     event.preventDefault();
 
-    // Your existing toggle logic for the heart button
+  
     var favbtn = document.getElementById("favbtn2");
     favbtn.classList.toggle("fav-active");
 
-    // Optional: change the button color or style
+    
     if (favbtn.classList.contains("fav-active")) {
-        favbtn.style.color = "red"; // Example: Change color when active
+        favbtn.style.color = "red"; 
     } else {
-        favbtn.style.color = ""; // Reset color when inactive
+        favbtn.style.color = ""; 
     }
 
-    // Send the data to the Flask server using fetch
+    
     var isFavorited = favbtn.classList.contains("fav-active");
     fetch('/toggle-favorite', {
         method: 'POST',
@@ -432,28 +430,27 @@ function FavButton2(event, toolName, description, iconText, href) {
     })
     .then(response => response.json())
     .then(data => {
-        console.log(data.message); // Log the response message from the server
+        console.log(data.message); 
     })
     .catch(error => console.error('Error:', error));
 }
 
 
 function FavButton3(event, toolName, description, iconText, href) {
-    // Prevents the default behavior of the anchor tag
     event.preventDefault();
 
-    // Your existing toggle logic for the heart button
+    
     var favbtn = document.getElementById("favbtn3");
     favbtn.classList.toggle("fav-active");
 
-    // Optional: change the button color or style
+    
     if (favbtn.classList.contains("fav-active")) {
-        favbtn.style.color = "red"; // Example: Change color when active
+        favbtn.style.color = "red";
     } else {
-        favbtn.style.color = ""; // Reset color when inactive
+        favbtn.style.color = ""; 
     }
 
-    // Send the data to the Flask server using fetch
+    
     var isFavorited = favbtn.classList.contains("fav-active");
     fetch('/toggle-favorite', {
         method: 'POST',
@@ -470,28 +467,25 @@ function FavButton3(event, toolName, description, iconText, href) {
     })
     .then(response => response.json())
     .then(data => {
-        console.log(data.message); // Log the response message from the server
+        console.log(data.message); 
     })
     .catch(error => console.error('Error:', error));
 }
 
 
 function FavButton4(event, toolName, description, iconText, href) {
-    // Prevents the default behavior of the anchor tag
     event.preventDefault();
 
-    // Your existing toggle logic for the heart button
     var favbtn = document.getElementById("favbtn4");
     favbtn.classList.toggle("fav-active");
 
-    // Optional: change the button color or style
+    
     if (favbtn.classList.contains("fav-active")) {
-        favbtn.style.color = "red"; // Example: Change color when active
+        favbtn.style.color = "red"; 
     } else {
-        favbtn.style.color = ""; // Reset color when inactive
+        favbtn.style.color = ""; 
     }
 
-    // Send the data to the Flask server using fetch
     var isFavorited = favbtn.classList.contains("fav-active");
     fetch('/toggle-favorite', {
         method: 'POST',
@@ -508,27 +502,24 @@ function FavButton4(event, toolName, description, iconText, href) {
     })
     .then(response => response.json())
     .then(data => {
-        console.log(data.message); // Log the response message from the server
+        console.log(data.message); 
     })
     .catch(error => console.error('Error:', error));
 }
 
 function FavButton5(event, toolName, description, iconText, href) {
-    // Prevents the default behavior of the anchor tag
     event.preventDefault();
 
-    // Your existing toggle logic for the heart button
+
     var favbtn = document.getElementById("favbtn5");
     favbtn.classList.toggle("fav-active");
 
-    // Optional: change the button color or style
     if (favbtn.classList.contains("fav-active")) {
-        favbtn.style.color = "red"; // Example: Change color when active
+        favbtn.style.color = "red"; 
     } else {
-        favbtn.style.color = ""; // Reset color when inactive
+        favbtn.style.color = ""; 
     }
 
-    // Send the data to the Flask server using fetch
     var isFavorited = favbtn.classList.contains("fav-active");
     fetch('/toggle-favorite', {
         method: 'POST',
@@ -545,27 +536,27 @@ function FavButton5(event, toolName, description, iconText, href) {
     })
     .then(response => response.json())
     .then(data => {
-        console.log(data.message); // Log the response message from the server
+        console.log(data.message);
     })
     .catch(error => console.error('Error:', error));
 }
 
 function FavButton6(event, toolName, description, iconText, href) {
-    // Prevents the default behavior of the anchor tag
+
     event.preventDefault();
 
-    // Your existing toggle logic for the heart button
+   
     var favbtn = document.getElementById("favbtn6");
     favbtn.classList.toggle("fav-active");
 
-    // Optional: change the button color or style
+    
     if (favbtn.classList.contains("fav-active")) {
-        favbtn.style.color = "red"; // Example: Change color when active
+        favbtn.style.color = "red"; 
     } else {
-        favbtn.style.color = ""; // Reset color when inactive
+        favbtn.style.color = ""; 
     }
 
-    // Send the data to the Flask server using fetch
+    
     var isFavorited = favbtn.classList.contains("fav-active");
     fetch('/toggle-favorite', {
         method: 'POST',
@@ -582,27 +573,26 @@ function FavButton6(event, toolName, description, iconText, href) {
     })
     .then(response => response.json())
     .then(data => {
-        console.log(data.message); // Log the response message from the server
+        console.log(data.message); 
     })
     .catch(error => console.error('Error:', error));
 }
 
 function FavButton7(event, toolName, description, iconText, href) {
-    // Prevents the default behavior of the anchor tag
     event.preventDefault();
 
-    // Your existing toggle logic for the heart button
+    
     var favbtn = document.getElementById("favbtn7");
     favbtn.classList.toggle("fav-active");
 
-    // Optional: change the button color or style
+
     if (favbtn.classList.contains("fav-active")) {
-        favbtn.style.color = "red"; // Example: Change color when active
+        favbtn.style.color = "red"; 
     } else {
-        favbtn.style.color = ""; // Reset color when inactive
+        favbtn.style.color = ""; 
     }
 
-    // Send the data to the Flask server using fetch
+   
     var isFavorited = favbtn.classList.contains("fav-active");
     fetch('/toggle-favorite', {
         method: 'POST',
@@ -619,28 +609,27 @@ function FavButton7(event, toolName, description, iconText, href) {
     })
     .then(response => response.json())
     .then(data => {
-        console.log(data.message); // Log the response message from the server
+        console.log(data.message); 
     })
     .catch(error => console.error('Error:', error));
 }
 
 
 function FavButton8(event, toolName, description, iconText, href) {
-    // Prevents the default behavior of the anchor tag
     event.preventDefault();
 
-    // Your existing toggle logic for the heart button
+    
     var favbtn = document.getElementById("favbtn8");
     favbtn.classList.toggle("fav-active");
 
-    // Optional: change the button color or style
+
     if (favbtn.classList.contains("fav-active")) {
-        favbtn.style.color = "red"; // Example: Change color when active
+        favbtn.style.color = "red"; 
     } else {
-        favbtn.style.color = ""; // Reset color when inactive
+        favbtn.style.color = ""; 
     }
 
-    // Send the data to the Flask server using fetch
+
     var isFavorited = favbtn.classList.contains("fav-active");
     fetch('/toggle-favorite', {
         method: 'POST',
@@ -657,28 +646,28 @@ function FavButton8(event, toolName, description, iconText, href) {
     })
     .then(response => response.json())
     .then(data => {
-        console.log(data.message); // Log the response message from the server
+        console.log(data.message); 
     })
     .catch(error => console.error('Error:', error));
 }
 
 
 function FavButton9(event, toolName, description, iconText, href) {
-    // Prevents the default behavior of the anchor tag
+  
     event.preventDefault();
 
-    // Your existing toggle logic for the heart button
+   
     var favbtn = document.getElementById("favbtn9");
     favbtn.classList.toggle("fav-active");
 
-    // Optional: change the button color or style
+    
     if (favbtn.classList.contains("fav-active")) {
-        favbtn.style.color = "red"; // Example: Change color when active
+        favbtn.style.color = "red"; 
     } else {
-        favbtn.style.color = ""; // Reset color when inactive
+        favbtn.style.color = ""; 
     }
 
-    // Send the data to the Flask server using fetch
+    
     var isFavorited = favbtn.classList.contains("fav-active");
     fetch('/toggle-favorite', {
         method: 'POST',
@@ -695,28 +684,26 @@ function FavButton9(event, toolName, description, iconText, href) {
     })
     .then(response => response.json())
     .then(data => {
-        console.log(data.message); // Log the response message from the server
+        console.log(data.message); 
     })
     .catch(error => console.error('Error:', error));
 }
 
 
 function FavButton10(event, toolName, description, iconText, href) {
-    // Prevents the default behavior of the anchor tag
     event.preventDefault();
 
-    // Your existing toggle logic for the heart button
     var favbtn = document.getElementById("favbtn10");
     favbtn.classList.toggle("fav-active");
 
-    // Optional: change the button color or style
+   
     if (favbtn.classList.contains("fav-active")) {
-        favbtn.style.color = "red"; // Example: Change color when active
+        favbtn.style.color = "red"; 
     } else {
-        favbtn.style.color = ""; // Reset color when inactive
+        favbtn.style.color = ""; 
     }
 
-    // Send the data to the Flask server using fetch
+  
     var isFavorited = favbtn.classList.contains("fav-active");
     fetch('/toggle-favorite', {
         method: 'POST',
@@ -733,30 +720,27 @@ function FavButton10(event, toolName, description, iconText, href) {
     })
     .then(response => response.json())
     .then(data => {
-        console.log(data.message); // Log the response message from the server
+        console.log(data.message);
     })
     .catch(error => console.error('Error:', error));
 }
 
 
-// Listen for changes in the navbar toggle
 navToggle.addEventListener('change', function() {
   if (navToggle.checked) {
     parentContainer.style.marginRight = `${navbarrightCollapsed}px`;
-    parentContainer.style.marginLeft = `${navbarWidthCollapsed}px`; // Add space for collapsed navbar
+    parentContainer.style.marginLeft = `${navbarWidthCollapsed}px`; 
     parentContainer.style.transition = "margin-left 0.3s ease";
   } else {
-    // Navbar is collapsed
     parentContainer.style.marginRight = `${navbarRightExpanded}px`;
-    parentContainer.style.marginLeft = `${navbarWidthExpanded}px`; // Add space for expanded navbar
-    parentContainer.style.transition = "margin-left 0.3s ease"; // Smooth transition
+    parentContainer.style.marginLeft = `${navbarWidthExpanded}px`; 
+    parentContainer.style.transition = "margin-left 0.3s ease";
   }
 });
 
 
 
 window.onload = function() {
-    // Get all favorite buttons
     const favButtons = document.querySelectorAll('.favbtn');
     
     favButtons.forEach(button => {
@@ -764,30 +748,22 @@ window.onload = function() {
         
         if (isFavorited) {
             button.classList.add('fav-active');
-            button.style.color = "red"; // Or any style to indicate it's favorited
+            button.style.color = "red";
         }
     });
 }
 
 
-
-
-
-
-// Optionally, add a resize event listener to ensure responsiveness when resizing the window
 window.addEventListener('resize', function() {
   if (window.innerWidth < 768) {
-    // Maybe adjust the layout for mobile/tablet views
-    parentContainer.style.marginLeft = '0'; // Reset for small screens
+    parentContainer.style.marginLeft = '0';
   }
 });
 
 
-  // Initialize active page highlighting
   highlightActivePage();
 
 
-// Add hover effect for all buttons
 navButtons.forEach(button => {
     button.addEventListener('mouseenter', () => {
         button.style.color = 'blue';
@@ -800,7 +776,7 @@ navButtons.forEach(button => {
 
     button.addEventListener('mouseleave', () => {
         if (!button.classList.contains('active')) {
-            button.style.color = ''; // Reset to original color if not active
+            button.style.color = ''; 
             const icon = button.querySelector('i');
             if (icon) {
                 icon.style.color = '';
@@ -808,22 +784,14 @@ navButtons.forEach(button => {
         }
     });
 
-
-    // Ensure active button keeps the blue color
     button.addEventListener('click', () => {
-        navButtons.forEach(b => b.classList.remove('active')); // Remove active class from all
-        button.classList.add('active'); // Add active class to clicked button
-        highlightActivePage(); // Update highlighted state
+        navButtons.forEach(b => b.classList.remove('active')); 
+        button.classList.add('active');
+        highlightActivePage(); 
     });
 });
-
-
-
-
-
   </script>
  
 </body>
 </html>
-
 
