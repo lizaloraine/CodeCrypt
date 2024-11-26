@@ -11,6 +11,9 @@
 
 
 html, body {
+  min-height: 100vh;
+  height: 100%;
+  height: 100vh;
   margin: 0;
   background: var(--background);
   font-family: Poppins;
