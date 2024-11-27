@@ -1077,3 +1077,156 @@ body.dark-mode .user-name #user-name-details {
 }
 
 
+
+@media (max-width: 768px) {
+  header {
+    flex-direction: column; 
+    align-items: center; 
+    padding: 1px;
+    background-color: #fff; 
+    width: 100%; 
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); 
+    top: 0;
+    left: 80px;
+  }
+
+  .header-right {
+    display: flex; 
+    flex-direction: row;
+    align-items: center; 
+    margin-top: 10px;
+    width: 100%; 
+    margin-left: calc(100vw - (-110px));
+}
+  .logout-btn, .profile-text {
+    font-size: 14px; 
+    padding: 8px 12px; 
+    margin-right: 10px; 
+  }
+
+  
+  .title-container {
+    margin-top: 60px;
+  }
+
+  .title-container h1 {
+    font-size: 18px;
+    padding-right: 30px;
+    padding-left: 30px;
+  }
+
+  .card-container-empty h2 {
+    font-size: 14px;
+  }
+ 
+  .parent-container {
+    margin-left: 105px; 
+    width: 100%;
+    padding: 10px; 
+  }
+
+  .card-container {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+  }
+
+  .card {
+    max-height: 130px;
+    width: 95%; 
+    max-width: 520px;
+   
+  }
+
+  .card .text h4 {
+    font-size: 16px; 
+    margin-bottom: 4px;
+    padding-top: 8px;
+  }
+
+  .card .text p {
+    font-size: 14px;
+    margin-bottom: 10px;
+  }
+
+  .card .favbtn {
+    font-size: 14px; 
+  }
+
+  .favorites-list {
+    flex-direction: column;
+    gap: 10px;
+    margin-bottom: 10px;
+  }
+
+  .favorites-list-item {
+    width: 100%; 
+    padding: 10px;
+    margin-bottom: 10px;
+  }
+
+  
+  .favorites-buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .favorites-buttons button {
+    width: 100%;
+    padding: 10px;
+    font-size: 14px; 
+  }
+
+  .footer-details {
+    width: 100%;
+    margin-top: 10px;
+  }
+
+  hr {
+    margin-top: 10px;
+  }
+
+
+  .nav-button,
+  .nav-button span,
+  .nav-button .fas,
+  #nav-content-highlight,
+  #nav-toggle:checked ~ #nav-header #nav-logo,
+  #nav-toggle-burger,
+  #nav-toggle-burger:before,
+  #nav-toggle-burger:after,
+  #nav-content,
+  #nav-title,
+  #nav-logo img,
+  #nav-toggle:checked ~ #nav-content .nav-button span,
+  #nav-header,
+  #nav-toggle:checked ~ #nav-header #nav-title {
+    transition: none !important;
+    animation: none !important;
+  }
+
+ 
+#nav-bar {
+  opacity: 0;
+  visibility: hidden; 
+  transition: opacity 0.3s ease, visibility 0s 0s;
+}
+
+#nav-bar.show {
+  opacity: 1;
+  visibility: visible; 
+  transition: opacity 0.3s ease, visibility 0s 0s;
+}
+
+
+.profile-dropdown {
+  top: calc(100% + 10px); 
+  left: 250px;
+  width: 40%; 
+}
+}
+
+
+
+
