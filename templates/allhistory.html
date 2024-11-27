@@ -283,7 +283,7 @@
         <hr> 
     {% endfor %}
     {% else %}
-                <h2 style="font-weight: bold; font-size: 30px; text-align: center; padding-left: 20px;white-space: nowrap;">
+                 <h2 class="empty-history-message">
                     You don't have any history yet. Convert now using tools in the <a href="{{ url_for('homepage') }}">homepage</a>!
                 </h2>
                 
@@ -291,23 +291,66 @@
 </div>
 <script>
 const navToggle = document.getElementById("nav-toggle"); 
+const navToggleBurger = document.getElementById("nav-toggle-burger"); 
 const parentContainer = document.querySelector(".parent-container"); 
-const navbarWidthExpanded = 478;
+const navbarWidthExpanded = 478; 
 const navbarWidthCollapsed = 328; 
 const navbarRightExpanded = 40;
-const navbarrightCollapsed = 0;
-    
-navToggle.addEventListener('change', function() {
-  if (navToggle.checked) {
-    parentContainer.style.marginRight = `${navbarrightCollapsed}px`;
-    parentContainer.style.marginLeft = `${navbarWidthCollapsed}px`; 
-    parentContainer.style.transition = "margin-left 0.3s ease";
+const navbarWidthCollapsedEmptySmall = 250;
+const navbarRightCollapsed = 0;
+
+function adjustLayoutForNavbar() {
+  if (window.innerWidth > 768) { 
+
+    navToggle.addEventListener('change', function() {
+      if (navToggle.checked) {
+        parentContainer.style.marginRight = `${navbarRightCollapsed}px`;
+        parentContainer.style.marginLeft = `${navbarWidthCollapsed}px`;
+        parentContainer.style.transition = "margin-left 0.3s ease";
+      } else {
+       
+        parentContainer.style.marginRight = `${navbarRightExpanded}px`;
+        parentContainer.style.marginLeft = `${navbarWidthExpanded}px`;
+        parentContainer.style.transition = "margin-left 0.3s ease"; 
+      }
+    });
   } else {
-    // Navbar is collapsed
-    parentContainer.style.marginRight = `${navbarRightExpanded}px`;
-    parentContainer.style.marginLeft = `${navbarWidthExpanded}px`; 
-    parentContainer.style.transition = "margin-left 0.3s ease";
+    
+    navToggle.disabled = true;
+    
+    parentContainer.style.marginLeft = '';
+    parentContainer.style.marginRight = '';
+   
+    navToggleBurger.addEventListener('click', function() {
+      window.location.href = "{{ url_for('homepage') }}";
+    });
   }
+}
+
+function closeNavbarOnSmallScreens() {
+  if (window.innerWidth <= 768) {
+    const message = document.querySelector('.empty-history-message');
+    message.innerHTML = message.innerHTML.replace('yet.', 'yet.<br>');
+    navToggle.checked = true; 
+    navToggle.disabled = true;
+    
+    setTimeout(function() {
+      document.getElementById("nav-bar").classList.add("show");
+    }, 300); 
+  } else {
+    navToggle.disabled = false;
+    document.getElementById("nav-bar").classList.add("show"); 
+  }
+}
+
+window.addEventListener('load', function() {
+  closeNavbarOnSmallScreens();
+  adjustLayoutForNavbar(); 
+});
+
+window.addEventListener('resize', function() {
+  closeNavbarOnSmallScreens(); 
+  adjustLayoutForNavbar(); 
 });
 </script>
 </body>
