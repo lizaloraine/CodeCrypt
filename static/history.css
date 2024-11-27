@@ -59,6 +59,7 @@ html, body {
   left: 0vw;
   top: 0vw;
   height: 100vh;
+  min-height: 100%;
   background: var(--navbar-dark-primary);
   display: flex;
   flex-direction: column;
@@ -425,16 +426,16 @@ header {
     padding-left: 30px;
   }
 
-.card-container, .title-container {
+  .main-content, .card-container, .title-container {
     transition: margin-left 0.3s ease, margin-top 0.3s ease;
   }
+  
   
   .parent-container {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
     margin-left: calc(var(--navbar-width) + 52px);
-    
     width: 100%; 
     flex-grow: 1; 
   }
