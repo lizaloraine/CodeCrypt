@@ -59,6 +59,7 @@ html, body {
   left: 0vw;
   top: 0vw;
   height: 100vh;
+  min-height: 100%;
   background: var(--navbar-dark-primary);
   display: flex;
   flex-direction: column;
