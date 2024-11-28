@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>History - CodeCrypt</title>
     <script>
+        
         if (localStorage.getItem("darkmode") === "true") {
            document.body.classList.add("dark-mode");
            const darkmodeIcon = document.querySelector("#darkmode-icon");
@@ -13,8 +14,10 @@
                darkmodeIcon.classList.add("fa-sun");
            }
        }
+         
     </script>
     <script src="{{ url_for('static', filename='js/header.js') }}" defer></script>
+    
     <link rel="stylesheet" href="{{ url_for('static', filename='history.css') }}">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
     
@@ -28,7 +31,6 @@
             </a>
          
             <div class="profile-dropdown" id="profile-dropdown">
-            
                 <span class="account-details">Account Details</span>
                 
                 <div class="user-email">
@@ -49,7 +51,7 @@
                         <div id="user-username-details" >{{ username }}</div> 
                     </div>
                 </div>
-                
+              
                 <div id="changeUsernameModal" class="modal">
                     <div class="modal-content">
                         <h2>Change Username</h2>
@@ -60,7 +62,7 @@
                         <label for="newUserame">Enter New Username:</label>
                         <input type="text" id="newUsername" name="newUsername" required><br>
 
-                       
+                        
                         <div class="flash-messages">
                             {% with messages = get_flashed_messages(with_categories=true) %}
                             {% if messages %}
@@ -91,6 +93,7 @@
                     </div>
                 </div>
 
+               
                  <div id="changeNameModal" class="modal">
                     <div class="modal-content">
                         <h2>Change Name</h2>
@@ -102,6 +105,7 @@
                         <label for="newName">Enter new name:</label>
                         <input type="text" id="newName" name="newName" required><br>
 
+                       
                        <div class="flash-messages-name">
                         {% with messages = get_flashed_messages(with_categories=true) %}
                         {% if messages %}
@@ -122,7 +126,6 @@
                     </div>
                 </div>
 
-           
                 <div class="user-password">
                 <a href="#" id="change-password-link" class="change-password">
                     <i class="fas fa-lock"></i> Change Password
@@ -181,8 +184,6 @@
         </div>
     </header>
 
-
-  
     <div id="nav-bar">
         <input id="nav-toggle" type="checkbox"/>
         <div id="nav-header">
@@ -211,6 +212,7 @@
             <div id="nav-content-highlight"></div>
         </div>
     </div>
+
 
 
 <div class="parent-container">
@@ -246,11 +248,11 @@
     <hr>
     {% if history %}
     {% for record in history %}
-       
+      
         <p><strong>Date & Time:</strong> {{ record.timestamp }}</p>
         <p><strong>Conversion Type:</strong> {{ record.conversion_type }} - {{ record.mode_type }}</p><br>
 
-    
+       
         <div class="history-entry">
             <div class="input-container">
                 <h3 class="input-word">Input</h3>
@@ -262,7 +264,7 @@
             </div>
         </div>
 
-      
+        
         <div class="additional-details">
             {% if record.shift %}
                 <p><strong>Shift:</strong> {{ record.shift }}</p>
@@ -280,16 +282,17 @@
                 <p><strong>Rail:</strong> {{ record.rail }}</p>
             {% endif %}
         </div>
-        <hr> 
+        <hr>
     {% endfor %}
     {% else %}
-                 <h2 class="empty-history-message">
+                <h2 class="empty-history-message">
                     You don't have any history yet. Convert now using tools in the <a href="{{ url_for('homepage') }}">homepage</a>!
                 </h2>
                 
             {% endif %}
 </div>
 <script>
+
 const navToggle = document.getElementById("nav-toggle"); 
 const navToggleBurger = document.getElementById("nav-toggle-burger"); 
 const parentContainer = document.querySelector(".parent-container"); 
@@ -298,6 +301,9 @@ const navbarWidthCollapsed = 328;
 const navbarRightExpanded = 40;
 const navbarWidthCollapsedEmptySmall = 250;
 const navbarRightCollapsed = 0;
+
+
+
 
 function adjustLayoutForNavbar() {
   if (window.innerWidth > 768) { 
@@ -327,19 +333,34 @@ function adjustLayoutForNavbar() {
   }
 }
 
+
 function closeNavbarOnSmallScreens() {
+  const navBar = document.getElementById("nav-bar");
+  const navToggle = document.getElementById("nav-toggle");
+  const message = document.querySelector('.empty-history-message');
+
   if (window.innerWidth <= 768) {
-    const message = document.querySelector('.empty-history-message');
-    message.innerHTML = message.innerHTML.replace('yet.', 'yet.<br>');
+    if (message && message.textContent.includes("You don't have any history yet.") && !message.innerHTML.includes('<br>')) {
+      message.innerHTML = message.innerHTML.replace('yet.', 'yet.<br>');
+    }
+
+    
     navToggle.checked = true; 
     navToggle.disabled = true;
-    
-    setTimeout(function() {
-      document.getElementById("nav-bar").classList.add("show");
-    }, 300); 
+
+    setTimeout(function () {
+      navBar.classList.add("show"); 
+    }, 300);
   } else {
-    navToggle.disabled = false;
-    document.getElementById("nav-bar").classList.add("show"); 
+
+    if (message && message.innerHTML.includes('<br>')) {
+      
+      message.innerHTML = message.innerHTML.replace('yet.<br>', 'yet.');
+    }
+
+
+    navToggle.disabled = false; 
+    navBar.classList.add("show");
   }
 }
 
@@ -348,10 +369,14 @@ window.addEventListener('load', function() {
   adjustLayoutForNavbar(); 
 });
 
+
 window.addEventListener('resize', function() {
   closeNavbarOnSmallScreens(); 
   adjustLayoutForNavbar(); 
 });
+
+
+
 </script>
 </body>
 </html>
