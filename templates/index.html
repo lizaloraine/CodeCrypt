@@ -207,21 +207,40 @@
         </div>
     </div>
 </section>
- <script>
+<script>
 document.addEventListener("DOMContentLoaded", () => {
     const elementsToAnimate = document.querySelectorAll("[data-animate]");
     const gridItems = document.querySelectorAll('.grid-item');
     const hamburgerMenu = document.querySelector('.hamburger-menu');
     const mobileMenu = document.querySelector('.mobile-menu');
 
+    
+    hamburgerMenu.addEventListener('click', (event) => {
+        event.preventDefault(); 
+        mobileMenu.classList.toggle('active');
+    });
 
-    hamburgerMenu.addEventListener('click', () => {
-    mobileMenu.classList.toggle('active');
-});
+   
+    document.addEventListener("click", (event) => {
+        if (mobileMenu.classList.contains('active') && 
+            !mobileMenu.contains(event.target) && 
+            !hamburgerMenu.contains(event.target)) {
+            mobileMenu.classList.remove('active');
+        }
+    });
+
+    
+    const menuLinks = document.querySelectorAll('.mobile-menu a');
+    menuLinks.forEach((link) => {
+        link.addEventListener('click', () => {
+            mobileMenu.classList.remove('active');
+        });
+    });
 
     const handleScroll = () => {
         elementsToAnimate.forEach((el) => {
             const rect = el.getBoundingClientRect();
+            
             if (rect.top <= window.innerHeight * 0.8) {
                 el.style.opacity = "1";
                 el.style.transform = "translateY(0)";
@@ -229,16 +248,31 @@ document.addEventListener("DOMContentLoaded", () => {
             }
         });
     };
-    gridItems.forEach(item => {
-  item.addEventListener('click', () => {
-    gridItems.forEach(btn => btn.classList.remove('active'));
-    item.classList.add('active');
-  });
-});
-    window.addEventListener("scroll", handleScroll);
-    handleScroll(); 
 
+    const handleAnchorLinks = () => {
+        const hash = window.location.hash; 
+        if (hash) {
+            const targetElement = document.querySelector(hash);
+            if (targetElement) {
+                targetElement.scrollIntoView({ behavior: "smooth" }); 
+            }
+        }
+    };
+
+    gridItems.forEach(item => {
+        item.addEventListener('click', () => {
+            gridItems.forEach(btn => btn.classList.remove('active')); 
+            item.classList.add('active'); 
+        });
+    });
+
+    window.addEventListener("scroll", handleScroll);
+    
+    handleScroll();
+    handleAnchorLinks(); 
 });
+
+
  </script>
 </body>
 </html>
