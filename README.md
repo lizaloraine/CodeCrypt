@@ -86,7 +86,7 @@ Each cipher tool includes:
 
 ---
 
-### Usage
+## Usage
 - **Registration and Login**
   - Register with your name, email, username, and password.
   - Log in to access cipher tools.
