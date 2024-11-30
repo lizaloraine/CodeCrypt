@@ -11,27 +11,37 @@ CodeCrypt is a web application that provides secure encryption and decryption of
 - [Usage](#usage)
 - [File Structure](#file-structure)
 - [Technologies Used](#technologies-used)
-- [Future Enhancements](#future-enhancements)
-- [Contributing](#contributing)
-- [License](#license)
 
 ---
 
 ## Features
-- **User Authentication**  
-  - Secure registration and login system using hashed passwords.  
-  - Session-based authentication for personalized user experience.  
 
-- **Cryptography Tools**  
-  - Encode and decode text using classical or traditional ciphers and encoding schemes.  
-  - Fun-to-use, friendly interface suitable for both practical applications and casual exploration of cryptography.
+### User Authentication
+- Secure registration and login system using hashed passwords.
+- Session-based authentication for personalized user experience.
 
-- **User-Friendly Interface**  
-  - Intuitive design with a consistent layout for all cipher pages.  
-  - Sidebars and headers for easy navigation.  
+### Cryptography Tools
+- Encode and decode text using classical or traditional ciphers and encoding schemes.
+- Fun-to-use, friendly interface suitable for both practical applications and casual exploration of cryptography.
 
-- **Responsive Design**  
-  - Accessible across devices with mobile-friendly layouts.  
+### User-Friendly Interface
+- Intuitive design with a consistent layout for all cipher pages.
+- Sidebars and headers for easy navigation.
+
+### Favorites and History
+- **Favorites**: Allow users to mark frequently used ciphers and tools as favorites for quick access.
+- **History**: Track the user's recent encryption and decryption activities for easy reference and re-use. Includes options for **filtering** and **sorting** by:
+  - Cipher type
+  - Recent or oldest activity
+
+### Profile Editing
+- Users can manage and update their profile details, such as username, name, and password, ensuring a personalized experience.
+
+### Dark Mode
+- A dark mode feature for users who prefer a darker interface, reducing eye strain and providing a more comfortable viewing experience in low-light environments.
+
+### Responsive Design
+- Accessible across devices with mobile-friendly layouts.
 
 ---
 
