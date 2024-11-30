@@ -31,9 +31,9 @@
            });
        
            const selectedRadio = document.querySelector('input[name="mode"]:checked');
-     
-           const selectedLabel = document.querySelector(`label[for="${selectedRadio.id}"]`);
        
+           const selectedLabel = document.querySelector(`label[for="${selectedRadio.id}"]`);
+           
            selectedLabel.classList.add('active');
        }
        
@@ -42,7 +42,6 @@
           
            function highlightActivePage() {
                navButtons.forEach(button => {
-               
                    if (button.href === window.location.href) {
                        button.classList.add('active');
                    } else {
@@ -51,9 +50,9 @@
                });
            }
        
- 
+       
            highlightActivePage();
-    
+       
            navButtons.forEach(button => {
                button.addEventListener('mouseenter', () => {
                    button.style.color = 'blue';
@@ -73,7 +72,7 @@
                        }
                    }
                });
-    
+       
                button.addEventListener('click', () => {
                    navButtons.forEach(b => b.classList.remove('active')); 
                    button.classList.add('active'); 
@@ -89,14 +88,12 @@
    
 </head>
 <body>
-
     <header>
         <div class="header-right">
             <a href="/logout" class="logout-btn">Logout</a>
             <a href="#" class="profile-text" id="profile-icon">
-                <i class="fas fa-user-circle"></i>
+                <i class="fas fa-user-circle"></i> 
             </a>
-    
             <div class="profile-dropdown" id="profile-dropdown">
                 <span class="account-details">Account Details</span>
                 
@@ -118,7 +115,7 @@
                         <div id="user-username-details" >{{ username }}</div> 
                     </div>
                 </div>
-         
+                
                 <div id="changeUsernameModal" class="modal">
                     <div class="modal-content">
                         <h2>Change Username</h2>
@@ -248,13 +245,12 @@
         </div>
     </header>
 
-
     <div id="nav-bar">
         <input id="nav-toggle" type="checkbox"/>
         <div id="nav-header">
            <div id="nav-logo">
             <a href="{{ url_for('homepage') }}">
-                <img src="{{ url_for('static', filename='images/logo2.png') }}" alt="Logo" class="login-logo">
+                <img src="{{ url_for('static', filename='images/logo2.png') }}" class="login-logo">
             </a>
            </div>
            <a id="nav-title" href="{{ url_for('homepage') }}">CodeCrypt</a>
@@ -284,8 +280,6 @@
             <h1>Affine Cipher</h1>
         </div>
     
-
-
     <div class="converter">
         <nav class="navbar">
             <div class="options">
@@ -333,25 +327,71 @@
  </div>
 </div>
 <script>
-const navToggle = document.getElementById("nav-toggle"); 
-const parentContainer = document.querySelector(".parent-container"); 
-const navbarWidthExpanded = 300; 
-const navbarWidthCollapsed = 100;
-const navbarRightExpanded = 40;
-const navbarrightCollapsed = 0;
-   
-navToggle.addEventListener('change', function() {
-  if (navToggle.checked) {
-    parentContainer.style.marginRight = `${navbarrightCollapsed}px`;
-    parentContainer.style.marginLeft = `${navbarWidthCollapsed}px`;
-    parentContainer.style.transition = "margin-left 0.3s ease";
-  } else {
-    parentContainer.style.marginRight = `${navbarRightExpanded}px`;
-    parentContainer.style.marginLeft = `${navbarWidthExpanded}px`; 
-    parentContainer.style.transition = "margin-left 0.3s ease"; 
-  }
-});
-</script>   
+    const navToggle = document.getElementById("nav-toggle"); 
+    const parentContainer = document.querySelector(".parent-container"); 
+    const navbarWidthExpanded = 300; 
+    const navbarWidthCollapsed = 100;
+    const navbarRightExpanded = 40;
+    const navbarRightCollapsed = 0;
+    
+    function updateCardContainerStyles() {
+      if (navToggle.checked) {
+        parentContainer.style.marginRight = `${navbarRightCollapsed}px`;
+        parentContainer.style.marginLeft = `${navbarWidthCollapsed}px`;
+        parentContainer.style.transition = "margin-left 0.3s ease";
+      } else {
+        parentContainer.style.marginRight = `${navbarRightExpanded}px`;
+        parentContainer.style.marginLeft = `${navbarWidthExpanded}px`; 
+        parentContainer.style.transition = "margin-left 0.3s ease"; 
+      }
+    }
+    
+    navToggle.addEventListener('change', updateCardContainerStyles);
+    
+    function adjustLayoutForNavbar() {
+      if (window.innerWidth > 768) {
+        navToggle.addEventListener("change", updateCardContainerStyles);
+        navToggle.disabled = false;
+      } else {
+        navToggle.checked = true; 
+        navToggle.disabled = true;
+       
+        parentContainer.style.marginLeft = ''; 
+        parentContainer.style.marginRight = ''; 
+    
+        
+        const navToggleBurger = document.getElementById("nav-toggle-burger");
+        if (navToggleBurger) {
+          navToggleBurger.addEventListener('click', function() {
+            window.location.href = "{{ url_for('homepage') }}";
+          });
+        }
+      }
+    }
+    
+    function closeNavbarOnSmallScreens() {
+      const navBar = document.getElementById("nav-bar"); 
+      
+      if (window.innerWidth <= 768) {
+        navToggle.checked = true; 
+        navToggle.disabled = true; 
+        navBar.classList.add("show"); 
+      } else {
+        navToggle.disabled = false; 
+        navBar.classList.add("show"); 
+      }
+    }
+    
+    window.addEventListener("load", function () {
+      closeNavbarOnSmallScreens();
+      adjustLayoutForNavbar();
+    });
+    
+    window.addEventListener("resize", function () {
+      closeNavbarOnSmallScreens();
+      adjustLayoutForNavbar();
+    });
+    </script>
+    
 </body>
 </html>
-
