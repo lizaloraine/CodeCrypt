@@ -108,7 +108,6 @@ Each cipher tool includes:
 The directory structure of the CodeCrypt web application is as follows:
 ![CodeCrypt Directory Structure](README-images/structure.png)
 
-
 ### Explanation:
 - **`static/`**: Contains static files like CSS, images, and JavaScript.
   - **`css/`**: Contains the stylesheets for the app, such as `loginregister.css`, `homepage.css`, and so on.
