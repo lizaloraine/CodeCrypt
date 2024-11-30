@@ -71,9 +71,8 @@
             <a href="#" class="profile-text" id="profile-icon">
                 <i class="fas fa-user-circle"></i> 
             </a>
-           
             <div class="profile-dropdown" id="profile-dropdown">
-                
+
                 <span class="account-details">Account Details</span>
                 
                 <div class="user-email">
@@ -85,8 +84,6 @@
                     </div>
                 </div>
     
-               
-              
                 <div class="user-username">
                     <i class="fas fa-user"></i>
                     <div class="username-details">
@@ -97,8 +94,6 @@
                     </div>
                 </div>
                 
-
-               
                 <div id="changeUsernameModal" class="modal">
                     <div class="modal-content">
                         <h2>Change Username</h2>
@@ -109,7 +104,6 @@
                         <label for="newUserame">Enter New Username:</label>
                         <input type="text" id="newUsername" name="newUsername" required><br>
 
-                      
                         <div class="flash-messages">
                             {% with messages = get_flashed_messages(with_categories=true) %}
                             {% if messages %}
@@ -130,8 +124,6 @@
                     </div>
                 </div>
 
-
-              
                 <div class="user-name">
                     <i class="fas fa-pencil-alt"></i>
                     <div class="name-details">
@@ -153,7 +145,6 @@
                         <label for="newName">Enter new name:</label>
                         <input type="text" id="newName" name="newName" required><br>
 
-                       
                        <div class="flash-messages-name">
                         {% with messages = get_flashed_messages(with_categories=true) %}
                         {% if messages %}
@@ -174,15 +165,11 @@
                     </div>
                 </div>
 
-               
-              
                 <div class="user-password">
                 <a href="#" id="change-password-link" class="change-password">
                     <i class="fas fa-lock"></i> Change Password
                 </a>
                 </div>
-
-                
                 <div id="changePasswordModal" class="modal">
                     <div class="modal-content">
                         <h2>Change Password</h2>
@@ -196,7 +183,6 @@
                         <label for="confirmPassword">Confirm new password:</label>
                         <input type="password" id="confirmPassword" name="confirmPassword" required><br>
 
-                       
                         <div class="flash-messages-pw">
                             {% with messages = get_flashed_messages(with_categories=true) %}
                             {% if messages %}
@@ -274,7 +260,7 @@
             <nav class="navbar">
                 <div class="options">
                     <div class="nav-list">
-                        <form method="POST" action="/hexadecimal">
+                        <form method="POST" action="/hexadecimal" class="hexa-form">
                             
                                 <input type="radio" name="mode" id="toHex" value="toHex" onclick="toggleInput()" {% if request.form.get('mode') == 'toHex' %}checked{% endif %}>
                                 <label class="nav-item" for="toHex">Text to Hexadecimal</label>
@@ -290,9 +276,12 @@
                                     </a>
                                 </div>
                     </nav>
+   
             <div class="cipher-container">
                 <div class="input-container">
                 <textarea id="input_text" name="input_text" placeholder="Please click an option first then enter your text here..." {% if request.form.get('mode') is none %}disabled{% endif %}>{{ request.form.get('input_text', '') }}</textarea>
+
+
                 <button type="submit" class="convert-btn">Convert</button><br><br>
             </div>
             <div class="result-container">
@@ -302,7 +291,7 @@
     </form>
 </div>
 </div>
-        <script>
+<script>
     const navToggle = document.getElementById("nav-toggle"); 
     const parentContainer = document.querySelector(".parent-container"); 
     const navbarWidthExpanded = 300; 
@@ -321,6 +310,50 @@
         parentContainer.style.transition = "margin-left 0.3s ease"; 
       }
     });
-    </script>
+
+
+
+    function adjustLayoutForNavbar() {
+  if (window.innerWidth > 768) {
+    navToggle.addEventListener("change", updateCardContainerStyles);
+    navToggle.disabled = false;
+  } else {
+    navToggle.checked = true; 
+    navToggle.disabled = true;
+   
+    parentContainer.style.marginLeft = '';
+    parentContainer.style.marginRight = '';
+    
+    navToggleBurger.addEventListener('click', function() {
+      window.location.href = "{{ url_for('homepage') }}";
+    });
+  }
+}
+
+function closeNavbarOnSmallScreens() {
+  const navBar = document.getElementById("nav-bar"); 
+  const navToggle = document.getElementById("nav-toggle"); 
+  
+  if (window.innerWidth <= 768) {
+    navToggle.checked = true; 
+    navToggle.disabled = true; 
+    navBar.classList.add("show"); 
+  } else {
+    navToggle.disabled = false; 
+    navBar.classList.add("show"); 
+  }
+}
+
+window.addEventListener("load", function () {
+  closeNavbarOnSmallScreens();
+  adjustLayoutForNavbar();
+});
+
+
+window.addEventListener("resize", function () {
+  closeNavbarOnSmallScreens();
+  adjustLayoutForNavbar();
+});
+    </script>  
 </body>
 </html>
