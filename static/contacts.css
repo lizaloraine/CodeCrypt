@@ -61,6 +61,7 @@ html, body {
   left: 0vw;
   top: 0vw;
   height: 100vh;
+  min-height: 100%;
   background: var(--navbar-dark-primary);
   display: flex;
   flex-direction: column;
@@ -1193,3 +1194,68 @@ body.dark-mode h2:hover {
   background-color: #fff3cd;
   color: #856404;
 }
+
+@media (max-width: 768px) {
+  header {
+    flex-direction: column; 
+    align-items: center; 
+    padding: 1px;
+    background-color: #fff; 
+    width: 100%; 
+    top: 0;
+    left: calc(10vw + 20px);
+  }
+
+  body.dark-mode header {
+    background-color: #121212;
+  }
+
+  .header-right {
+    display: flex; 
+    flex-direction: row; 
+    align-items: center; 
+    margin-top: 10px;
+    width: 100%; 
+    margin-left: calc(100vw - (-110px));
+}
+  .logout-btn, .profile-text {
+    font-size: 14px;
+    padding: 8px 12px; 
+    margin-right: 10px; 
+  }
+
+  .title-container {
+    margin-top: 60px;
+  }
+
+  .title-container h1 {
+    font-size: 16px;
+    padding-right: 30px;
+    padding-left: 30px;
+  }
+
+  .parent-container {
+    margin-left: 105px; 
+    width: 100%;
+    padding: 10px; 
+  }
+
+  .card-container {
+    display: flex;
+    flex-direction: column;
+    gap: 15px; 
+  }
+
+  .card {
+    max-height: 130px;
+    width: 95%;
+    max-width: 520px; 
+   
+  }
+ 
+  .card, .contact-info {
+    width: 100%; 
+  }
+
+}
+
