@@ -21,8 +21,8 @@ CodeCrypt is a web application that provides secure encryption and decryption of
   - Session-based authentication for personalized user experience.  
 
 - **Cryptography Tools**  
-  - Encode and decode text using classical ciphers and encoding schemes.  
-  - Detailed explanations of each cipher, making it beginner-friendly.  
+  - Encode and decode text using classical or traditional ciphers and encoding schemes.  
+  - Fun-to-use, friendly interface suitable for both practical applications and casual exploration of cryptography.
 
 - **User-Friendly Interface**  
   - Intuitive design with a consistent layout for all cipher pages.  
@@ -63,5 +63,7 @@ Each cipher tool includes:
 ### Steps
 1. **Clone the Repository**  
    ```bash
-   git clone https://github.com/yourusername/CodeCrypt.git
+   git clone https://github.com/lizaloraine/CodeCrypt.git
    cd CodeCrypt
+
+
