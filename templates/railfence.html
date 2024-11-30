@@ -4,90 +4,83 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Rail Fence Cipher</title>
-    <script>
+   <script>
         if (localStorage.getItem("darkmode") === "true") {
-            document.body.classList.add("dark-mode");
-            const darkmodeIcon = document.querySelector("#darkmode-icon");
-            if (darkmodeIcon) {
-                darkmodeIcon.classList.remove("fa-moon");
-                darkmodeIcon.classList.add("fa-sun");
-            }
-        }
-
-function toggleInput() {
-    const encryptRadio = document.getElementById('encrypt');
-    const decryptRadio = document.getElementById('decrypt');
-    const inputTextArea = document.getElementById('input_text');
-    const labels = document.querySelectorAll('.nav-item');
-    
-    if (encryptRadio.checked || decryptRadio.checked) {
-        inputTextArea.removeAttribute('disabled');
-    } else {
-        inputTextArea.setAttribute('disabled', 'disabled');
-    }
-
-    labels.forEach(label => {
-        label.classList.remove('active');
-    });
-
-
-    const selectedRadio = document.querySelector('input[name="mode"]:checked');
-
-   
-    const selectedLabel = document.querySelector(`label[for="${selectedRadio.id}"]`);
-    
-l
-    selectedLabel.classList.add('active');
-}
-
-document.addEventListener('DOMContentLoaded', () => {
-    const navButtons = document.querySelectorAll('.nav-button');
-  
-    function highlightActivePage() {
-        navButtons.forEach(button => {
-            
-            if (button.href === window.location.href) {
-                button.classList.add('active');
-            } else {
-                button.classList.remove('active');
-            }
-        });
-    }
-
-    highlightActivePage();
-
-
-    navButtons.forEach(button => {
-        button.addEventListener('mouseenter', () => {
-            button.style.color = 'blue';
-            const icon = button.querySelector('i');
-            if (icon) {
-                icon.style.color = 'blue';
-            }
-        });
-
-
-        button.addEventListener('mouseleave', () => {
-            if (!button.classList.contains('active')) {
-                button.style.color = ''; 
-                const icon = button.querySelector('i');
-                if (icon) {
-                    icon.style.color = '';
-                }
-            }
-        });
-
-
-        button.addEventListener('click', () => {
-            navButtons.forEach(b => b.classList.remove('active')); 
-            button.classList.add('active'); 
-            highlightActivePage(); 
-        });
-    });
-});
-
-
-</script>
+                   document.body.classList.add("dark-mode");
+                   const darkmodeIcon = document.querySelector("#darkmode-icon");
+                   if (darkmodeIcon) {
+                       darkmodeIcon.classList.remove("fa-moon");
+                       darkmodeIcon.classList.add("fa-sun");
+                   }
+               }
+       
+       function toggleInput() {
+           const encryptRadio = document.getElementById('encrypt');
+           const decryptRadio = document.getElementById('decrypt');
+           const inputTextArea = document.getElementById('input_text');
+           const labels = document.querySelectorAll('.nav-item');
+           
+           if (encryptRadio.checked || decryptRadio.checked) {
+               inputTextArea.removeAttribute('disabled');
+           } else {
+               inputTextArea.setAttribute('disabled', 'disabled');
+           }
+       
+           labels.forEach(label => {
+               label.classList.remove('active');
+           });
+       
+           const selectedRadio = document.querySelector('input[name="mode"]:checked');
+       
+           const selectedLabel = document.querySelector(`label[for="${selectedRadio.id}"]`);
+           
+           selectedLabel.classList.add('active');
+       }
+       
+       document.addEventListener('DOMContentLoaded', () => {
+           const navButtons = document.querySelectorAll('.nav-button');
+          
+           function highlightActivePage() {
+               navButtons.forEach(button => {
+                   if (button.href === window.location.href) {
+                       button.classList.add('active');
+                   } else {
+                       button.classList.remove('active');
+                   }
+               });
+           }
+       
+       
+           highlightActivePage();
+       
+           navButtons.forEach(button => {
+               button.addEventListener('mouseenter', () => {
+                   button.style.color = 'blue';
+                   const icon = button.querySelector('i');
+                   if (icon) {
+                       icon.style.color = 'blue';
+                   }
+               });
+       
+       
+               button.addEventListener('mouseleave', () => {
+                   if (!button.classList.contains('active')) {
+                       button.style.color = ''; 
+                       const icon = button.querySelector('i');
+                       if (icon) {
+                           icon.style.color = '';
+                       }
+                   }
+               });
+       
+               button.addEventListener('click', () => {
+                   navButtons.forEach(b => b.classList.remove('active')); 
+                   button.classList.add('active'); 
+                   highlightActivePage(); 
+               });
+           });
+       });
+       </script>
 <script src="{{ url_for('static', filename='js/header.js') }}" defer></script>  
     <link rel="stylesheet" href="{{ url_for('static', filename='ciphers.css') }}">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
