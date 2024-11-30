@@ -71,7 +71,34 @@ Each cipher tool includes:
    cd CodeCrypt
 
 2. **Set Up MySQL Database**
-   Create a database named CodeCrypt.
-   Use the SQL queries provided in the [schema.sql](schema.sql) file to set up the database tables.
+   - Create a database named CodeCrypt.
+   - Use the SQL queries provided in the [schema.sql](schema.sql) file to set up the database tables.
+
+3. **Install Dependencies**
+   ```bash
+   pip install flask flask-mysqldb werkzeug
+   pip install Flask-Mail
+
+4. **Run the Application**
+   ```bash
+   python app.py
+   - The application will be accessible at http://127.0.0.1:5000.
+
+### Usage
+- **Registration and Login**
+  - Register with your name, email, username, and password.
+  - Log in to access cipher tools.
+
+- **Select a Cipher Tool**
+  - Navigate through the sidebar (or the card containers in the homepage) to select a cipher or encoding tool.
+  - Input the text to encrypt or decrypt as needed.
+    
+- **Results**
+  - Results are displayed in a dedicated area beside the input.
+
+- **Logout**
+  - Securely log out from the application when finished.
+
+
 
 
