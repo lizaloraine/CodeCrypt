@@ -64,7 +64,7 @@ CodeCrypt supports the following tools:
 Each cipher tool includes:  
 - Input fields for plain text or encoded text.  
 - Options to toggle between encryption and decryption.  
-- Detailed results displayed in real-time.  
+- Detailed results/conversion displayed in real-time.  
 
 ---
 
