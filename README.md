@@ -103,21 +103,40 @@ Each cipher tool includes:
 
 ---
 
-##File Structure
+## File Structure
+
+The directory structure of the CodeCrypt web application is as follows:
 
 CodeCrypt/
 ├── static/
-│   ├── css/
-│   │   └── loginregister.css
-│   │   └── homepage.css
-│   ├── images/
+│ ├── css/ 
+│ │ ├── loginregister.css 
+│ │ ├── homepage.css 
+│ │ └── ...
+│ ├── images/ 
+│ │ ├── logo.png
+│ │ ├── logo2.png
+│ │ └── ...
+│ └── js/ 
+│ └── header.js 
 ├── templates/
-│   ├── login.html
-│   ├── register.html
-│   ├── homepage.html
-│   ├── atbash.html
-│   ├── railfence.html
-│   ├── ...
+│ ├── login.html
+│ ├── register.html
+│ ├── homepage.html
+│ ├── atbash.html
+│ ├── railfence.html
+│ └── ...
 └── app.py
+
+
+### Explanation:
+- **`static/`**: Contains static files like CSS, images, and JavaScript.
+  - **`css/`**: Contains the stylesheets for the app, such as `loginregister.css`, `homepage.css`, and so on.
+  - **`images/`**: This folder holds any image assets for the web app.
+  - **`js/`**: Contains JavaScript file like `header.js` for any interactive components.
+- **`templates/`**: Contains the HTML templates for the pages.
+  - Files like `login.html`, `register.html`, `homepage.html`, etc., which are used for rendering different parts of the web app.
+- **`app.py`**: The main Python script for running the Flask application and handling routes.
+
 
 
