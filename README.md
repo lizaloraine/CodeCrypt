@@ -48,6 +48,8 @@ CodeCrypt supports the following tools:
 9. **ROT13 Cipher**  
 10. **Vigenère Cipher**
 
+![CodeCrypt Homepage](README-images/homepage.jpg)
+
 Each cipher tool includes:  
 - Input fields for plain text or encoded text.  
 - Options to toggle between encryption and decryption.  
