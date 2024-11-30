@@ -101,6 +101,23 @@ Each cipher tool includes:
 - **Logout**
   - Securely log out from the application when finished.
 
+---
 
+##File Structure
+
+CodeCrypt/
+├── static/
+│   ├── css/
+│   │   └── loginregister.css
+│   │   └── homepage.css
+│   ├── images/
+├── templates/
+│   ├── login.html
+│   ├── register.html
+│   ├── homepage.html
+│   ├── atbash.html
+│   ├── railfence.html
+│   ├── ...
+└── app.py
 
 
