@@ -106,27 +106,7 @@ Each cipher tool includes:
 ## File Structure
 
 The directory structure of the CodeCrypt web application is as follows:
-
-CodeCrypt/
-├── static/
-│ ├── css/ 
-│ │ ├── loginregister.css 
-│ │ ├── homepage.css 
-│ │ └── ...
-│ ├── images/ 
-│ │ ├── logo.png
-│ │ ├── logo2.png
-│ │ └── ...
-│ └── js/ 
-│ └── header.js 
-├── templates/
-│ ├── login.html
-│ ├── register.html
-│ ├── homepage.html
-│ ├── atbash.html
-│ ├── railfence.html
-│ └── ...
-└── app.py
+![CodeCrypt Directory Structure](README-images/structure.png)
 
 
 ### Explanation:
