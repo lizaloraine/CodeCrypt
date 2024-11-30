@@ -11,6 +11,7 @@ CodeCrypt is a web application that provides secure encryption and decryption of
 - [Usage](#usage)
 - [File Structure](#file-structure)
 - [Technologies Used](#technologies-used)
+- [Credits](#credits)
 
 ---
 
@@ -144,12 +145,12 @@ The directory structure of the CodeCrypt web application is as follows:
 ## Credits
 
 - **Project Author**: trioBytes Team
-  -- Ignacio, Liza Loraine M.
-  -- Balbuena, Jeff Lawrence C.
-  -- Godoy, Hillarie R.
+  - Ignacio, Liza Loraine M.
+  - Balbuena, Jeff Lawrence C.
+  - Godoy, Hillarie R.
 
 - **Special Thanks**:
-  -- to Ms. Fatima Marie Agdon, our instructor.
+  - to Ms. Fatima Marie Agdon, our instructor.
 
 - **Project Context**:
   - This web application project was developed as the **final project** for the **IT 314 - Web Systems and Technologies** course.
