@@ -98,19 +98,28 @@ Each cipher tool includes:
 ---
 
 ## Usage
-- **Registration and Login**
-  - Register with your name, email, username, and password.
-  - Log in to access cipher tools.
 
-- **Select a Cipher Tool**
-  - Navigate through the sidebar (or the card containers in the homepage) to select a cipher or encoding tool.
-  - Input the text to encrypt or decrypt as needed.
-    
-- **Results**
-  - Results are displayed in a dedicated area beside the input.
+### 1. Registration and Login
+- **Register** with your name, email, username, and password.
+- **Log in** to access the cipher tools.
 
-- **Logout**
-  - Securely log out from the application when finished.
+### 2. Select a Cipher Tool
+- Navigate through the **sidebar** or use the **card containers** on the homepage to select a cipher or encoding tool.
+- Input the text that you want to **encrypt** or **decrypt** as needed.
+
+### 3. Results
+- The **results** of the encryption or decryption process will be displayed in a dedicated area beside the input field.
+
+### 4. Favorites
+- You can **mark** your frequently used ciphers as **favorites** for easy access later.
+- These **favorites** will be displayed in a separate section for quick selection.
+
+### 5. History
+- The app keeps a **history** of your past operations.
+- You can **view** and **filter** your history by **cipher type** or sort it by **newest** or **oldest** to revisit previous encryptions or decryptions.
+
+### 6. Logout
+- You can securely **log out** from the application when you're finished using it.
 
 ---
 
