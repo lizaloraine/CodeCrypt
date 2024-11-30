@@ -1078,7 +1078,6 @@ body.dark-mode .user-name #user-name-details {
 }
 
 
-
 @media (max-width: 768px) {
   header {
     flex-direction: column; 
@@ -1086,11 +1085,14 @@ body.dark-mode .user-name #user-name-details {
     padding: 1px;
     background-color: #fff; 
     width: 100%; 
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); 
     top: 0;
-    left: 80px;
+    left: calc(10vw + 20px);
   }
 
+  body.dark-mode header {
+    background-color: #121212;
+  }
+  
   .header-right {
     display: flex; 
     flex-direction: row;
@@ -1227,7 +1229,6 @@ body.dark-mode .user-name #user-name-details {
   width: 40%; 
 }
 }
-
 
 
 
