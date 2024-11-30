@@ -1257,5 +1257,10 @@ body.dark-mode h2:hover {
     width: 100%; 
   }
 
+  .profile-dropdown {
+    top: calc(100% + 10px); 
+    left: 290px;
+    width: 43%; 
+  }
 }
 
