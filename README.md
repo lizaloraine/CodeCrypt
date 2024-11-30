@@ -20,6 +20,7 @@ CodeCrypt is a web application that provides secure encryption and decryption of
 ### User Authentication
 - Secure registration and login system using hashed passwords.
 - Session-based authentication for personalized user experience.
+- **Forgot Password**: Allows users to recover their account by resetting their password via email.
 
 ### Cryptography Tools
 - Encode and decode text using classical or traditional ciphers and encoding schemes.
