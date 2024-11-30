@@ -58,6 +58,7 @@ html, body {
   left: 0vw;
   top: 0vw;
   height: 100vh;
+  min-height: 100%;
   background: var(--navbar-dark-primary);
   display: flex;
   flex-direction: column;
@@ -1078,16 +1079,18 @@ margin-bottom: 2px;
 
 @media (max-width: 768px) {
 
-
   header {
     flex-direction: column; 
-    align-items: center;
+    align-items: center; 
     padding: 1px;
     background-color: #fff; 
     width: 100%; 
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); 
     top: 0;
-    left: 80px;
+    left: calc(10vw + 20px);
+  }
+
+  body.dark-mode header {
+    background-color: #121212;
   }
 
   .header-right {
@@ -1103,8 +1106,6 @@ margin-bottom: 2px;
     padding: 8px 12px; 
     margin-right: 10px; 
   }
-
-
 
   .title-container {
     margin-top: 60px;
@@ -1195,6 +1196,4 @@ margin-bottom: 2px;
   left: 250px; 
   width: 40%; 
 }
-
 }
-
