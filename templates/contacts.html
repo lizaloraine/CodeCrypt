@@ -25,9 +25,8 @@
             <a href="#" class="profile-text" id="profile-icon">
                 <i class="fas fa-user-circle"></i> 
             </a>
-        
+           
             <div class="profile-dropdown" id="profile-dropdown">
-              
                 <span class="account-details">Account Details</span>
                 
                 <div class="user-email">
@@ -39,7 +38,7 @@
                     </div>
                 </div>
     
-               
+           
                 <div class="user-username">
                     <i class="fas fa-user"></i>
                     <div class="username-details">
@@ -61,7 +60,6 @@
                         <label for="newUserame">Enter New Username:</label>
                         <input type="text" id="newUsername" name="newUsername" required><br>
 
-                      
                         <div class="flash-messages">
                             {% with messages = get_flashed_messages(with_categories=true) %}
                             {% if messages %}
@@ -82,8 +80,6 @@
                     </div>
                 </div>
 
-
-                
                 <div class="user-name">
                     <i class="fas fa-pencil-alt"></i>
                     <div class="name-details">
@@ -94,7 +90,6 @@
                     </div>
                 </div>
 
-                
                  <div id="changeNameModal" class="modal">
                     <div class="modal-content">
                         <h2>Change Name</h2>
@@ -126,15 +121,13 @@
                     </div>
                 </div>
 
-               
-              
                 <div class="user-password">
                 <a href="#" id="change-password-link" class="change-password">
                     <i class="fas fa-lock"></i> Change Password
                 </a>
                 </div>
 
-                
+    
                 <div id="changePasswordModal" class="modal">
                     <div class="modal-content">
                         <h2>Change Password</h2>
@@ -148,7 +141,6 @@
                         <label for="confirmPassword">Confirm new password:</label>
                         <input type="password" id="confirmPassword" name="confirmPassword" required><br>
 
-                        
                         <div class="flash-messages-pw">
                             {% with messages = get_flashed_messages(with_categories=true) %}
                             {% if messages %}
@@ -265,18 +257,18 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div> 
     <script>
         const navToggle = document.getElementById("nav-toggle"); 
         const parentContainer = document.querySelector(".parent-container"); 
         const navbarWidthExpanded = 300; 
         const navbarWidthCollapsed = 100;
         const navbarRightExpanded = 40;
-        const navbarrightCollapsed = 0;
-           
-        navToggle.addEventListener('change', function() {
+        const navbarRightCollapsed = 0;
+        
+        function updateCardContainerStyles() {
           if (navToggle.checked) {
-            parentContainer.style.marginRight = `${navbarrightCollapsed}px`;
+            parentContainer.style.marginRight = `${navbarRightCollapsed}px`;
             parentContainer.style.marginLeft = `${navbarWidthCollapsed}px`;
             parentContainer.style.transition = "margin-left 0.3s ease";
           } else {
@@ -284,7 +276,52 @@
             parentContainer.style.marginLeft = `${navbarWidthExpanded}px`; 
             parentContainer.style.transition = "margin-left 0.3s ease"; 
           }
+        }
+        
+        navToggle.addEventListener('change', updateCardContainerStyles);
+        
+        function adjustLayoutForNavbar() {
+          if (window.innerWidth > 768) {
+            navToggle.addEventListener("change", updateCardContainerStyles);
+            navToggle.disabled = false;
+          } else {
+            navToggle.checked = true; 
+            navToggle.disabled = true;
+           
+            parentContainer.style.marginLeft = ''; 
+            parentContainer.style.marginRight = ''; 
+        
+            const navToggleBurger = document.getElementById("nav-toggle-burger");
+            if (navToggleBurger) {
+              navToggleBurger.addEventListener('click', function() {
+                window.location.href = "{{ url_for('homepage') }}";
+              });
+            }
+          }
+        }
+        
+        function closeNavbarOnSmallScreens() {
+          const navBar = document.getElementById("nav-bar"); 
+          
+          if (window.innerWidth <= 768) {
+            navToggle.checked = true; 
+            navToggle.disabled = true; 
+            navBar.classList.add("show"); 
+          } else {
+            navToggle.disabled = false; 
+            navBar.classList.add("show"); 
+          }
+        }
+        
+        window.addEventListener("load", function () {
+          closeNavbarOnSmallScreens();
+          adjustLayoutForNavbar();
         });
-        </script> 
+        
+        window.addEventListener("resize", function () {
+          closeNavbarOnSmallScreens();
+          adjustLayoutForNavbar();
+        });
+        </script>
 </body>
 </html>
