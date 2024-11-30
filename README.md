@@ -110,7 +110,7 @@ The directory structure of the CodeCrypt web application is as follows:
 
 ### Explanation:
 - **`static/`**: Contains static files like CSS, images, and JavaScript.
-  - **`css/`**: Contains the stylesheets for the app, such as `loginregister.css`, `homepage.css`, and so on.
+  - Contains the stylesheets for the app, such as `loginregister.css`, `homepage.css`, and so on.
   - **`images/`**: This folder holds any image assets for the web app.
   - **`js/`**: Contains JavaScript file like `header.js` for any interactive components.
 - **`templates/`**: Contains the HTML templates for the pages.
