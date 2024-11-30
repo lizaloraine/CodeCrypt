@@ -20,21 +20,21 @@ function toggleInput() {
     const inputTextArea = document.getElementById('input_text');
     const labels = document.querySelectorAll('.nav-item');
     
-
     if (encryptRadio.checked || decryptRadio.checked) {
         inputTextArea.removeAttribute('disabled');
     } else {
         inputTextArea.setAttribute('disabled', 'disabled');
     }
 
+ 
     labels.forEach(label => {
         label.classList.remove('active');
     });
 
-    
+   
     const selectedRadio = document.querySelector('input[name="mode"]:checked');
 
-    
+   
     const selectedLabel = document.querySelector(`label[for="${selectedRadio.id}"]`);
     
     
@@ -47,7 +47,7 @@ document.addEventListener('DOMContentLoaded', () => {
     
     function highlightActivePage() {
         navButtons.forEach(button => {
-            
+           
             if (button.href === window.location.href) {
                 button.classList.add('active');
             } else {
@@ -59,8 +59,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
     highlightActivePage();
 
-
-    
     navButtons.forEach(button => {
         button.addEventListener('mouseenter', () => {
             button.style.color = 'blue';
@@ -73,7 +71,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         button.addEventListener('mouseleave', () => {
             if (!button.classList.contains('active')) {
-                button.style.color = '';
+                button.style.color = ''; 
                 const icon = button.querySelector('i');
                 if (icon) {
                     icon.style.color = '';
@@ -81,8 +79,6 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
 
-
-        
         button.addEventListener('click', () => {
             navButtons.forEach(b => b.classList.remove('active')); 
             button.classList.add('active'); 
@@ -99,16 +95,16 @@ document.addEventListener('DOMContentLoaded', () => {
     
 </head>
 <body>
-    
+   
     <header>
         <div class="header-right">
             <a href="/logout" class="logout-btn">Logout</a>
             <a href="#" class="profile-text" id="profile-icon">
                 <i class="fas fa-user-circle"></i> 
             </a>
-           
+            
             <div class="profile-dropdown" id="profile-dropdown">
-              
+               
                 <span class="account-details">Account Details</span>
                 
                 <div class="user-email">
@@ -120,8 +116,6 @@ document.addEventListener('DOMContentLoaded', () => {
                     </div>
                 </div>
     
-               
-                
                 <div class="user-username">
                     <i class="fas fa-user"></i>
                     <div class="username-details">
@@ -132,8 +126,6 @@ document.addEventListener('DOMContentLoaded', () => {
                     </div>
                 </div>
                 
-
-               
                 <div id="changeUsernameModal" class="modal">
                     <div class="modal-content">
                         <h2>Change Username</h2>
@@ -144,7 +136,6 @@ document.addEventListener('DOMContentLoaded', () => {
                         <label for="newUserame">Enter New Username:</label>
                         <input type="text" id="newUsername" name="newUsername" required><br>
 
-                       
                         <div class="flash-messages">
                             {% with messages = get_flashed_messages(with_categories=true) %}
                             {% if messages %}
@@ -165,8 +156,6 @@ document.addEventListener('DOMContentLoaded', () => {
                     </div>
                 </div>
 
-
-               
                 <div class="user-name">
                     <i class="fas fa-pencil-alt"></i>
                     <div class="name-details">
@@ -177,7 +166,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     </div>
                 </div>
 
-                
+              
                  <div id="changeNameModal" class="modal">
                     <div class="modal-content">
                         <h2>Change Name</h2>
@@ -189,7 +178,6 @@ document.addEventListener('DOMContentLoaded', () => {
                         <label for="newName">Enter new name:</label>
                         <input type="text" id="newName" name="newName" required><br>
 
-                    
                        <div class="flash-messages-name">
                         {% with messages = get_flashed_messages(with_categories=true) %}
                         {% if messages %}
@@ -211,14 +199,13 @@ document.addEventListener('DOMContentLoaded', () => {
                 </div>
 
                
-              
                 <div class="user-password">
                 <a href="#" id="change-password-link" class="change-password">
                     <i class="fas fa-lock"></i> Change Password
                 </a>
                 </div>
 
-                
+           
                 <div id="changePasswordModal" class="modal">
                     <div class="modal-content">
                         <h2>Change Password</h2>
@@ -232,7 +219,6 @@ document.addEventListener('DOMContentLoaded', () => {
                         <label for="confirmPassword">Confirm new password:</label>
                         <input type="password" id="confirmPassword" name="confirmPassword" required><br>
 
-                       
                         <div class="flash-messages-pw">
                             {% with messages = get_flashed_messages(with_categories=true) %}
                             {% if messages %}
@@ -272,8 +258,6 @@ document.addEventListener('DOMContentLoaded', () => {
         </div>
     </header>
 
-
- 
     <div id="nav-bar">
         <input id="nav-toggle" type="checkbox"/>
         <div id="nav-header">
@@ -309,8 +293,6 @@ document.addEventListener('DOMContentLoaded', () => {
             <h1>Morse Code</h1>
         </div>
 
-
-
     <div class="converter">
         <nav class="navbar">
             <div class="options">
@@ -327,7 +309,6 @@ document.addEventListener('DOMContentLoaded', () => {
         </div>
         
         <div class="input-values">
-        
             <div class="input-values">
                 <a href="{{ url_for('all_history', cipher_type='Morse Code') }}">
                     <button class="history-btn2" type="button">
@@ -372,6 +353,52 @@ document.addEventListener('DOMContentLoaded', () => {
         parentContainer.style.transition = "margin-left 0.3s ease"; 
       }
     });
-    </script>    
+
+
+
+    function adjustLayoutForNavbar() {
+  if (window.innerWidth > 768) {
+    navToggle.addEventListener("change", updateCardContainerStyles);
+    navToggle.disabled = false;
+  } else {
+    navToggle.checked = true; 
+    navToggle.disabled = true;
+   
+    parentContainer.style.marginLeft = '';
+    parentContainer.style.marginRight = '';
+    
+    navToggleBurger.addEventListener('click', function() {
+      window.location.href = "{{ url_for('homepage') }}";
+    });
+  }
+}
+
+function closeNavbarOnSmallScreens() {
+  const navBar = document.getElementById("nav-bar"); 
+  const navToggle = document.getElementById("nav-toggle"); 
+  
+  if (window.innerWidth <= 768) {
+    navToggle.checked = true; 
+    navToggle.disabled = true; 
+    navBar.classList.add("show"); 
+  } else {
+    navToggle.disabled = false; 
+    navBar.classList.add("show"); 
+  }
+}
+
+window.addEventListener("load", function () {
+  closeNavbarOnSmallScreens();
+  adjustLayoutForNavbar();
+});
+
+
+window.addEventListener("resize", function () {
+  closeNavbarOnSmallScreens();
+  adjustLayoutForNavbar();
+});
+    </script>  
+
+
 </body>
 </html>
