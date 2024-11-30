@@ -82,7 +82,9 @@ Each cipher tool includes:
 4. **Run the Application**
    ```bash
    python app.py
-   - The application will be accessible at http://127.0.0.1:5000.
+- The application will be accessible at http://127.0.0.1:5000.
+
+---
 
 ### Usage
 - **Registration and Login**
