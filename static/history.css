@@ -436,7 +436,7 @@ header {
     flex-direction: column;
     align-items: flex-start;
     margin-left: 478px;
-    width: 100%; 
+    width: 70%; 
     flex-grow: 1; 
   }
 
@@ -465,7 +465,7 @@ header {
   .history-entry {
     display: flex;
     justify-content: space-between;
-    width: 80%;
+    width: 70%;
     margin-bottom: 20px;
     border: 1px solid #ddd;
     padding: 15px;
@@ -476,7 +476,7 @@ header {
   
   .input-container,
   .output-container {
-    width: 45%;
+    width: 48%;
     padding: 15px;
     background-color: #fff;
     border-radius: 8px;
@@ -499,7 +499,7 @@ header {
   
   
   .additional-details {
-    width: 100%;
+    width: 70%;
     margin-top: 15px;
     padding: 15px;
     background-color: transparent;
@@ -512,7 +512,7 @@ header {
   
  
   hr {
-    width: 100%;
+    width: 70%;
     margin: 20px 0;
     border: 0;
     border-top: 1px solid #ddd;
@@ -1059,7 +1059,7 @@ body.dark-mode h2 a {
   .parent-container {
     transition: margin-left 0.4s ease, margin-top 0.4s ease;
       margin-left: 104px; 
-      width: 100%;
+      width: 80%;
       padding: 10px; 
   }
 
