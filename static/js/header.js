@@ -1,5 +1,3 @@
-// modal
-
 const passwordModal = document.getElementById("changePasswordModal");
 const changePasswordLink = document.getElementById("change-password-link");
 const cancelBtn3 = document.getElementById("cancelBtn3");
@@ -149,8 +147,6 @@ function clearMessagesPw() {
     });
 }
 
-
-// change pw form submit
 form.addEventListener("submit", function (event) {
     
     if (!form.checkValidity()) {
@@ -260,17 +256,11 @@ nameform.addEventListener("submit", function (event) {
 });
 
 
-
-
-// Handle Dark Mode Toggle
-// Dark Mode Toggle Script
 const darkmodeToggle = document.getElementById("darkmode-toggle");
 const darkmodeIcon = document.getElementById("darkmode-icon");
 
-// Check if dark mode is already saved in localStorage
 let isDarkMode = localStorage.getItem("darkmode") === "true"; // If saved, set to true, else false
 
-// Apply the saved preference when the page loads
 if (isDarkMode) {
     document.body.classList.add("dark-mode");
     darkmodeIcon.classList.remove("fa-moon");
@@ -278,7 +268,7 @@ if (isDarkMode) {
 }
 
 darkmodeToggle.addEventListener("click", function() {
-    // Toggle the dark mode
+   
     isDarkMode = !isDarkMode;
     
     if (isDarkMode) {
@@ -291,7 +281,6 @@ darkmodeToggle.addEventListener("click", function() {
         darkmodeIcon.classList.add("fa-moon");
     }
     
-    // Save the preference to localStorage
     localStorage.setItem("darkmode", isDarkMode);
 });
 
