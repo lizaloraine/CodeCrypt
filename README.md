@@ -10,7 +10,6 @@ CodeCrypt is a web application that provides secure encryption and decryption of
 - [Installation](#installation)
 - [Usage](#usage)
 - [File Structure](#file-structure)
-- [Screenshots](#screenshots)
 - [Technologies Used](#technologies-used)
 - [Future Enhancements](#future-enhancements)
 - [Contributing](#contributing)
@@ -68,5 +67,9 @@ Each cipher tool includes:
    ```bash
    git clone https://github.com/lizaloraine/CodeCrypt.git
    cd CodeCrypt
+
+2. **Set Up MySQL Database**
+   Create a database named CodeCrypt.
+   Use the SQL queries provided in the [schema.sql](schema.sql) file to set up the database tables.
 
 
