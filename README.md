@@ -117,5 +117,15 @@ The directory structure of the CodeCrypt web application is as follows:
   - Files like `login.html`, `register.html`, `homepage.html`, etc., which are used for rendering different parts of the web app.
 - **`app.py`**: The main Python script for running the Flask application and handling routes.
 
+---
 
+## Technologies Used
+
+- **Backend**: Python (Flask)
+- **Frontend**: HTML, CSS, JavaScript
+- **Database**: MySQL
+- **Password Hashing**: Werkzeug
+- **Email Handling**: Flask-Mail
+- **Session Management**: Flask
+- **Serialization**: ItsDangerous
 
