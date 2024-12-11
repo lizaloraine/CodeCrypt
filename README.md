@@ -7,11 +7,17 @@ CodeCrypt is a web application that provides secure encryption and decryption of
 ## Table of Contents
 - [Features](#features)
 - [Ciphers and Encoding Tools](#ciphers-and-encoding-tools)
-- [Installation](#installation)
+- [System Architecture](#system-architecture)
+- [Applied Computer Science Concept](#applied-computer-science-concept)
+- [Algorithms Used](#algorithms-used)
+- [Security Mechanisms](#security-mechanisms)
+- [Development Process and Design Decisions](#development-process-and-design-decisions)
+- [Correctness and Efficiency](#correctness-and-efficiency)
+- [Installation/How to Run the Project](#installation)
 - [Usage](#usage)
 - [File Structure](#file-structure)
-- [Technologies Used](#technologies-used)
-- [Credits](#credits)
+- [Contributors](#contributors)
+- [Acknowledgement](#Acknowledgement)
 
 ---
 
@@ -152,12 +158,12 @@ The directory structure of the CodeCrypt web application is as follows:
 
 ---
 
-## Credits
+## Contributors
 
 - **Project Author**: trioBytes Team
-  - Ignacio, Liza Loraine M.
-  - Balbuena, Jeff Lawrence C.
-  - Godoy, Hillarie R.
+  - Ignacio, Liza Loraine M. as the *Project Manager/Fullstack Developer*
+  - Balbuena, Jeff Lawrence C. as the *Frontend Developer*
+  - Godoy, Hillarie R. as the *Backend Developer*
 
 - **Special Thanks**:
   - to Ms. Fatima Marie Agdon, our instructor.
