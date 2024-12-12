@@ -239,8 +239,8 @@ The following is the key steps and methodologies followed during the creation of
 5. **Iterative Testing**
    - Ensured correctness and efficiency of cipher algorithms through extensive testing.
 
-Summary of the Development Process:
-It starts with designing for user needs, progresses through modular implementation and coding best practices, includes database schema optimization, and ends with testing and debugging to deliver a polished product.
+**Summary of the Development Process:**
+- It starts with designing for user needs, progresses through modular implementation and coding best practices, includes database schema optimization, and ends with testing and debugging to deliver a polished product.
 
 ---
 
@@ -274,7 +274,7 @@ It starts with designing for user needs, progresses through modular implementati
    
 ---
 
-## Installation
+## Installation / How to Run the Project
 ### Prerequisites
 - [Python 3.x](https://www.python.org/)
 - [Flask](https://flask.palletsprojects.com/)
