@@ -13,7 +13,7 @@ CodeCrypt is a web application that provides secure encryption and decryption of
 - [Security Mechanisms](#security-mechanisms)
 - [Development Process and Design Decisions](#development-process-and-design-decisions)
 - [Correctness and Efficiency](#correctness-and-efficiency)
-- [Installation/How to Run the Project](#installation)
+- [Installation/How to Run the Project](#installation-how-to-run-the-project)
 - [Usage](#usage)
 - [File Structure](#file-structure)
 - [Contributors](#contributors)
