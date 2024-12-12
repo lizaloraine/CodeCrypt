@@ -49,7 +49,7 @@ CodeCrypt is a web application that provides secure encryption and decryption of
 - A dark mode feature for users who prefer a darker interface, reducing eye strain and providing a more comfortable viewing experience in low-light environments.
 
 ### Responsive Design
-- Accessible across devices with mobile-friendly layouts.
+- Accessible across different desktop browsers, screens, and layouts.
 
 ---
 
