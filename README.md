@@ -14,8 +14,8 @@ CodeCrypt is a web application that provides secure encryption and decryption of
 - [Development Process and Design Decisions](#development-process-and-design-decisions)
 - [Correctness and Efficiency](#correctness-and-efficiency)
 - [Installation/How to Run the Project](#installation--how-to-run-the-project)
-- [Usage](#usage)
 - [File Structure](#file-structure)
+- [Usage](#usage)
 - [Contributors](#contributors)
 - [Acknowledgement](#Acknowledgement)
 
@@ -303,6 +303,22 @@ The following is the key steps and methodologies followed during the creation of
 
 ---
 
+## File Structure
+
+The directory structure of the CodeCrypt web application is as follows:
+![CodeCrypt Directory Structure](README-images/structure.png)
+
+### Explanation:
+- **`static/`**: Contains static files like CSS, images, and JavaScript.
+  - Contains the stylesheets for the app, such as `loginregister.css`, `homepage.css`, and so on.
+  - **`images/`**: This folder holds any image assets for the web app.
+  - **`js/`**: Contains JavaScript file like `header.js` for any interactive components.
+- **`templates/`**: Contains the HTML templates for the pages.
+  - Files like `login.html`, `register.html`, `homepage.html`, etc., which are used for rendering different parts of the web app.
+- **`app.py`**: The main Python script for running the Flask application and handling routes.
+
+---
+
 ## Usage
 
 ### 1. Registration and Login
@@ -326,22 +342,6 @@ The following is the key steps and methodologies followed during the creation of
 
 ### 6. Logout
 - You can securely **log out** from the application when you're finished using it.
-
----
-
-## File Structure
-
-The directory structure of the CodeCrypt web application is as follows:
-![CodeCrypt Directory Structure](README-images/structure.png)
-
-### Explanation:
-- **`static/`**: Contains static files like CSS, images, and JavaScript.
-  - Contains the stylesheets for the app, such as `loginregister.css`, `homepage.css`, and so on.
-  - **`images/`**: This folder holds any image assets for the web app.
-  - **`js/`**: Contains JavaScript file like `header.js` for any interactive components.
-- **`templates/`**: Contains the HTML templates for the pages.
-  - Files like `login.html`, `register.html`, `homepage.html`, etc., which are used for rendering different parts of the web app.
-- **`app.py`**: The main Python script for running the Flask application and handling routes.
 
 ---
 
