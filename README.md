@@ -82,7 +82,24 @@ CodeCrypt follows a **three-tier architecture**:
 2. **Backend**: Python (Flask) processes requests, applies cipher algorithms, and handles business logic.
 3. **Database Layer**: MySQL stores user credentials, favorites, and history data, ensuring secure and efficient data management.
 
-![System Architecture](README-images/architecture.png)
+### System Architecture Process
+**User Login/Registration** →
+User registers or logs in with their credentials.
+
+**Frontend Processing** →
+User selects a cipher and inputs text.
+
+**Session Management** →
+Backend verifies user session to ensure authenticated access to the tools.
+
+**Cipher Execution**  →
+Backend runs the selected cipher algorithm (e.g., Caesar, Atbash, etc.) on the input.
+
+**Result Return** →
+Processed result is sent back to the frontend and displayed to the user.
+
+**User Data Handling** →
+User data is stored securely in MySQL, and passwords are hashed.
 
 ### Additional Technologies Used
 
