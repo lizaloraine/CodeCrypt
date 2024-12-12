@@ -84,11 +84,8 @@ CodeCrypt follows a **three-tier architecture**:
 
 ![System Architecture](README-images/architecture.png)
 
-### Technologies Used
+### Additional Technologies Used
 
-- **Backend**: Python (Flask)
-- **Frontend**: HTML, CSS, JavaScript
-- **Database**: MySQL
 - **Password Hashing**: Werkzeug
 - **Email Handling**: Flask-Mail
 - **Session Management**: Flask
